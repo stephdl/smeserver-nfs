@@ -1,0 +1,2 @@
+LOCKD_TCPPORT={ $nfslock{lockdPort} }
+LOCKD_UDPPORT={ $nfslock{lockdPort} }

@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+foreach (qw(hosts.allow sysconfig/nfs))
+{
+    templates2events("/etc/$_", qw(
+	console-save
+	bootstrap-console-save
+	remoteaccess-update
+    ));
+}
+
+foreach $event (qw(remoteaccess-update))
+{
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfs");
+}
+
+service_link_enhanced("portmap", "S13", "7");
+service_link_enhanced("nfslock", "S59", "7");
+service_link_enhanced("nfs", "S60", "7");
