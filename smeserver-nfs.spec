@@ -5,7 +5,7 @@
 Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
-%define version 1.0.0
+%define version 1.2.0
 %define release 1
 Version: %{version}
 Release: %{release}%{?dist}
@@ -13,10 +13,10 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: e-smith-base >= 4.13.16-27
+Requires: e-smith-base 
 Requires: nfs-utils
 Requires: portmap
-Requires: e-smith-lib >= 1.15.1-16
+Requires: e-smith-lib 
 Requires: e-smith-packetfilter >= 1.13.0-22
 BuildRequires: e-smith-devtools >= 1.13.1-03
 BuildArchitectures: noarch
@@ -25,6 +25,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
+* Tue Sep 16 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-1.sme
+- Initial release to sme9
+
 * Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
 - Clean up spec so package can be built by koji/plague
 

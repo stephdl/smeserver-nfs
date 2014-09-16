@@ -2,7 +2,7 @@
 
 use esmith::Build::CreateLinks qw(:all);
 
-foreach (qw(hosts.allow sysconfig/nfs))
+foreach (qw(sysconfig/nfs))
 {
     templates2events("/etc/$_", qw(
 	console-save
