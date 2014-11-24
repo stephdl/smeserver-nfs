@@ -6,7 +6,7 @@ Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
 %define version 1.2.0
-%define release 1
+%define release 2
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -25,6 +25,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
+* Mon Nov 24 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-2.sme
+- removed portmap to rpcbind in r7.d
+
 * Tue Sep 16 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-1.sme
 - Initial release to sme9
 
