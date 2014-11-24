@@ -19,18 +19,18 @@
 /etc/e-smith/db/configuration/defaults/nfs/access
 /etc/e-smith/db/configuration/defaults/nfs/mountdPort
 /etc/e-smith/db/configuration/defaults/nfs/rquotadPort
-%dir %attr(0755,root,root) /etc/e-smith/db/configuration/defaults/portmap
-/etc/e-smith/db/configuration/defaults/portmap/type
-/etc/e-smith/db/configuration/defaults/portmap/status
-/etc/e-smith/db/configuration/defaults/portmap/UDPPort
-/etc/e-smith/db/configuration/defaults/portmap/TCPPort
-/etc/e-smith/db/configuration/defaults/portmap/access
+%dir %attr(0755,root,root) /etc/e-smith/db/configuration/defaults/rpcbind
+/etc/e-smith/db/configuration/defaults/rpcbind/type
+/etc/e-smith/db/configuration/defaults/rpcbind/status
+/etc/e-smith/db/configuration/defaults/rpcbind/UDPPort
+/etc/e-smith/db/configuration/defaults/rpcbind/TCPPort
+/etc/e-smith/db/configuration/defaults/rpcbind/access
 %dir %attr(0755,root,root) /etc/e-smith/templates
 %dir %attr(0755,root,root) /etc/e-smith/templates/etc
 %dir %attr(0755,root,root) /etc/e-smith/templates/etc/hosts.allow
 /etc/e-smith/templates/etc/hosts.allow/lockd
 /etc/e-smith/templates/etc/hosts.allow/mountd
-/etc/e-smith/templates/etc/hosts.allow/portmap
+/etc/e-smith/templates/etc/hosts.allow/rpcbind
 /etc/e-smith/templates/etc/hosts.allow/rquotad
 /etc/e-smith/templates/etc/hosts.allow/statd
 %dir %attr(0755,root,root) /etc/e-smith/templates/etc/sysconfig
@@ -59,7 +59,7 @@
 %dir %attr(0755,root,root) /etc/e-smith/events/remoteaccess-update/templates2expand/etc/sysconfig
 /etc/e-smith/events/remoteaccess-update/templates2expand/etc/sysconfig/nfs
 %dir %attr(0755,root,root) /etc/rc.d/rc7.d
-/etc/rc.d/rc7.d/S13portmap
+/etc/rc.d/rc7.d/S13rpcbind
 /etc/rc.d/rc7.d/S59nfslock
 /etc/rc.d/rc7.d/S60nfs
 %doc COPYING
