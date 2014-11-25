@@ -6,7 +6,7 @@ Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
 %define version 1.2.0
-%define release 2
+%define release 3
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -15,7 +15,7 @@ Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base 
 Requires: nfs-utils
-Requires: portmap
+Requires: nfs4-acl-tools
 Requires: e-smith-lib 
 Requires: e-smith-packetfilter >= 1.13.0-22
 BuildRequires: e-smith-devtools >= 1.13.1-03
@@ -25,6 +25,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
+* Tue Nov 25 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-3.sme
+- added nfs4-acl-tools for nfsv4 dependency
+
 * Mon Nov 24 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-2.sme
 - removed portmap to rpcbind in r7.d
 
