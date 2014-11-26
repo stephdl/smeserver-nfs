@@ -13,12 +13,12 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: e-smith-base 
+Requires: e-smith-base >= 9 
 Requires: nfs-utils
 Requires: nfs4-acl-tools
 Requires: e-smith-lib 
-Requires: e-smith-packetfilter >= 1.13.0-22
-BuildRequires: e-smith-devtools >= 1.13.1-03
+Requires: e-smith-packetfilter 
+BuildRequires: e-smith-devtools
 BuildArchitectures: noarch
 
 %description
@@ -26,7 +26,9 @@ e-smith server and gateway - configure nfs server
 
 %changelog
 * Tue Nov 25 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-3.sme
-- added nfs4-acl-tools for nfsv4 dependency
+- Added nfs4-acl-tools for nfsv4 dependency
+- Added a template to /etc/exports
+- Added a specific event nfs-update
 
 * Mon Nov 24 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-2.sme
 - removed portmap to rpcbind in r7.d

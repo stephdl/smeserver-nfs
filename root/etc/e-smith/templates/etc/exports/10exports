@@ -1,0 +1,77 @@
+{
+        use strict;
+        use warnings;
+	use esmith::AccountsDB;
+        use esmith::ConfigDB;
+        use esmith::NetworksDB;
+        use Net::IPv4Addr;
+
+    my $ndb = esmith::NetworksDB->open_ro();
+
+    my $localAccess = '';
+    foreach ($ndb->local_access_spec())
+    {
+        # If there's a / in the network string
+        # then convert to CIDR notation
+        if (m!/!) 
+            {
+            my ($ip,$bits) = Net::IPv4Addr::ipv4_parse($_);
+            $localAccess .= "$ip/$bits";
+            }
+    }
+
+
+	my $accounts = esmith::AccountsDB->open_ro;
+	my $config   = esmith::ConfigDB->open_ro;
+
+	my @ibays = $accounts->ibays;
+	foreach my $ibay (@ibays) 
+        {
+                #first we verify if the NFS is enabled for the ibay
+		my $nfsstatus = $ibay->prop("NfsStatus") || "disabled";
+
+                #then we look about the host(s) allowed
+                my $nfsclient = $ibay->prop("NfsClient") || "none";
+		$nfsclient = $localAccess if (($nfsclient eq 'private') || ($nfsclient eq 'local'));
+                
+                #my $gid = $ibay->prop("Gid")||'';
+                #my $uid = $ibay->prop("Uid")||'';
+
+                #now we look about exports options
+                my $nfsrw           = $ibay->prop("NfsRW")       || 'ro';
+                my $nfssync         = $ibay->prop("NfsSync")     || 'sync';
+                my $wdelay          = $ibay->prop("NfsWdelay")   || 'wdelay'; 
+                my $nfssquash       = $ibay->prop("NfsSquash")   || 'root_squash';
+                my $anonuid         = $ibay->prop("NfsAnonUid")  || '';
+                my $anongid         = $ibay->prop("NfsAnonGid")  || '';
+                
+                my $nfs_options = 'nohide' . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
+                                          . $nfssquash;
+
+                $nfs_options = 'nohide' . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ',' 
+                                          . $nfssquash . ',' . "anonuid=$anonuid" . ',' . "anongid=$anongid"
+                                                         if ( ($anonuid ne '') && ($anongid ne '')) ;
+ 
+                #Then we retrieve the name of the ebay
+		my $key = $ibay->key;
+
+		if (($nfsstatus eq 'enabled') && ($nfsclient ne 'none'))
+                {
+
+			# write the configuration
+
+                          {
+                             my @IP = split(",", ($nfsclient || "") );
+                             $OUT .=     "\n/home/e-smith/files/ibays/$key/files ";
+
+                             foreach my $IP (@IP) 
+                                   {
+                                      $OUT .=  " $IP($nfs_options)";
+                                   }
+                          }
+
+                }
+
+	}
+
+}

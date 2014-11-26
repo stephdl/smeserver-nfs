@@ -2,16 +2,17 @@
 
 use esmith::Build::CreateLinks qw(:all);
 
-foreach (qw(sysconfig/nfs))
+foreach (qw(sysconfig/nfs exports))
 {
     templates2events("/etc/$_", qw(
 	console-save
 	bootstrap-console-save
 	remoteaccess-update
+        nfs-update
     ));
 }
 
-foreach $event (qw(remoteaccess-update))
+foreach $event (qw(remoteaccess-update nfs-update))
 {
     safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfs");
 }
