@@ -86,13 +86,13 @@
     <entry>
         <base>NFSCLIENT</base>
         <trans>
-             The host(s) or network to which the export is being shared 
+             NFS Client(s) allowed. 
         </trans>
     </entry>
         <entry>
         <base>NFSRW</base>
         <trans>
-     The exported file system permissions(ro/rw)
+     The exported file system permissions.
         </trans>
     </entry>
          <entry>
@@ -110,7 +110,7 @@
     <entry>
         <base>NFSSYNC</base>
         <trans>
-      Changes can be written before to answer to other requests(sync/async).
+      Changes can be written (a)synchronously.
         </trans>
    </entry>
        <entry>
@@ -128,7 +128,7 @@
     <entry>
         <base>NFSDELAY</base>
         <trans>
-        delays disk writes if NFS requests are small(wdelay/no_wdelay).
+        delays disk writes if NFS requests are small.
         </trans>
    </entry>
        <entry>
@@ -147,7 +147,7 @@
     <entry>
         <base>NFSSQUASH</base>
         <trans>
-        This "squashes" the power of the remote user to the anonymous local user.
+        This "squashes" the power of the remote users.
         </trans>
     </entry>
        <entry>
@@ -171,13 +171,13 @@
        <entry>
         <base>NFSANONUID</base>
         <trans>
-         anonuid : Set the UID of the remote user share(leave blanck if not used)
+         anonuid : Set the UID (leave blanck if not used)
         </trans>
     </entry>
      <entry>
         <base>NFSANONGID</base>
         <trans>
-         anongid : Set the GID of the remote group share(leave blanck if not used)
+         anongid : Set the GID (leave blanck if not used)
         </trans>
     </entry>
 </lexicon>
