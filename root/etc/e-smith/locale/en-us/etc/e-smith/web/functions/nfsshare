@@ -4,29 +4,29 @@
     <entry>
         <base>FORM_TITLE</base>
         <trans>
-               Web Hosting Contrib
-</trans>
+               NFS Share Contrib
+    </trans>
     </entry>
 <entry>
-<base>webhosting</base>
-<trans>I-bays - Web Hosting</trans>
+<base>nfsshare</base>
+<trans>I-bays - Nfs Share</trans>
 </entry> 
     <entry>
         <base>FIRSTPAGE_DESC</base>
         <trans>
-         Manage Apache and PHP settings
+         Manage NFS Share settings.
         </trans>
     </entry>
     <entry>
         <base>ADD_TITLE</base>
         <trans>
-            Modify Apache and PHP Settings.
+            Manage NFS Share settings.
         </trans>
     </entry>
     <entry>
         <base>NAME_FIELD_DESC</base>
         <trans>
-These parameters will be effective only if the access from the web is allowed for the concerned I-bay in the informations bays panel.
+These parameters will be effective only if the status of nfs below is set to nfs.
         </trans>
     </entry>
     <entry>
@@ -83,363 +83,112 @@ These parameters will be effective only if the access from the web is allowed fo
         <trans>Information bays</trans>
     </entry>
      <entry>
-        <base>DESC_HTTP_SETTINGS</base>
+        <base>DESC_ANONUIDGID</base>
         <trans>
-            The following settings control the access of this I-bay using the HTTP/HTTPS protocol.
+            These options explicitly set the uid and gid of the share account, where you might want all requests appear to be from one user.
+        </trans>
+    </entry>
+     <entry>
+        <base>NFSSTATUS</base>
+        <trans>
+        Enable the NFS Share for this Information bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>NFSCLIENT</base>
+        <trans>
+        NFS clients may be specified by 'private' for the local network or by the IP/host/domain separated by a coma ','.
         </trans>
     </entry>
         <entry>
-        <base>DESC_PHP_SETTINGS</base>
+        <base>NFSRW</base>
         <trans>
-            The following settings control the PHP values of this I-bay.
+        This settings is to mount the share in read only or with read and write permissions
         </trans>
     </entry>
-    <entry>
-        <base>INDEXES</base>
+         <entry>
+        <base>RO</base>
         <trans>
-        Allow directory listing (+Indexes)
+         Read Only
         </trans>
     </entry>
-    <entry>
-        <base>FOLLOWSYMLINKS</base>
+         <entry>
+        <base>RW</base>
         <trans>
-        Follow symbolic links (FollowSymLinks)
+        Read and Write
         </trans>
-    </entry>
+    </entry>   
     <entry>
-        <base>ALLOWOVERRIDE</base>
+        <base>NFSSYNC</base>
         <trans>
-        Allow .htaccess policy (AllowOverride)
+       The NFS server will not reply to requests before changes are written to disk.
         </trans>
    </entry>
-    <entry>
-        <base>ALLOWURLFOPEN</base>
+       <entry>
+        <base>SYNC</base>
         <trans>
-        Allow access to remote files (Allow_url_fopen)
+         sync
         </trans>
     </entry>
-  <entry>
-        <base>DEFAULT</base>
+       <entry>
+        <base>ASYNC</base>
         <trans>
-        Default value
-        </trans>
-    </entry>
-        <entry>
-        <base>M0064MB</base>
-        <trans>
-        64MB
-        </trans>
-    </entry>  
-          <entry>
-        <base>M0128MB</base>
-        <trans>
-        128MB
-        </trans>
-    </entry>
-          <entry>
-        <base>M0256MB</base>
-        <trans>
-        256MB
-        </trans>
-    </entry>
-          <entry>
-        <base>M0512MB</base>
-        <trans>
-        512MB
+         async
         </trans>
     </entry>
     <entry>
-        <base>M0768MB</base>
+        <base>NFSDELAY</base>
         <trans>
-        768MB
+        The server will delay writing to the disk if a write request is imminent.
+        </trans>
+   </entry>
+       <entry>
+        <base>WDELAY</base>
+        <trans>
+         wdelay
         </trans>
     </entry>
-           <entry>
-        <base>M1024MB</base>
+   
+     <entry>
+        <base>NO_WDELAY</base>
         <trans>
-        1024MB
+         no_wdelay
+        </trans>
+    </entry>
+    <entry>
+        <base>NFSSQUASH</base>
+        <trans>
+        This "squashes" the power of the remote  user to the lowest local user.
+        </trans>
+    </entry>
+       <entry>
+        <base>ROOT_SQUASH</base>
+        <trans>
+         root_squash, squash the root user
+        </trans>
+    </entry>
+       <entry>
+        <base>NO_ROOT_SQUASH</base>
+        <trans>
+         no_root_squash, don't squash the root user
+        </trans>
+    </entry>
+       <entry>
+        <base>ALL_SQUASH</base>
+        <trans>
+         all_squash, squash all users
+        </trans>
+    </entry>
+       <entry>
+        <base>NFSANONUID</base>
+        <trans>
+         anonuid : Set the UID of the remote user share(leave blanck if not used)
         </trans>
     </entry>
      <entry>
-        <base>T001m</base>
+        <base>NFSANONGID</base>
         <trans>
-        1 minute
-        </trans>
-    </entry>
-    <entry>
-        <base>T002m</base>
-        <trans>
-        2 minutes
-        </trans>
-    </entry>
-       <entry>
-        <base>T003m</base>
-        <trans>
-        3 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T004m</base>
-        <trans>
-        4 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T005m</base>
-        <trans>
-        5 minutes
-        </trans>
-    </entry>
-    <entry>
-        <base>T006m</base>
-        <trans>
-        6 minutes
-        </trans>
-    </entry>
-       <entry>
-        <base>T007m</base>
-        <trans>
-        7 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T008m</base>
-        <trans>
-        8 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T009m</base>
-        <trans>
-        9 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T010m</base>
-        <trans>
-        10 minutes
-        </trans>
-    </entry>
-          <entry>
-        <base>T015m</base>
-        <trans>
-        15 minutes
-       </trans>
-    </entry>
-          <entry>
-        <base>T030m</base>
-        <trans>
-        30 minutes
-        </trans>
-    </entry>
-           <entry>
-        <base>T045m</base>
-        <trans>
-        45 minutes
-        </trans>
-    </entry>
-       <entry>
-        <base>T060m</base>
-        <trans>
-        One hour
-        </trans>
-    </entry>
-    <entry>
-        <base>T120m</base>
-        <trans>
-        Two hours
-        </trans>
-    </entry>
-     <entry>
-        <base>UNLIMITED</base>
-        <trans>
-        Unlimited
-        </trans>
-    </entry>
-      <entry>
-        <base>S0020MB</base>
-        <trans>
-        20MB
-        </trans>
-    </entry>
-    <entry>
-        <base>S0030MB</base>
-        <trans>
-        30MB
-        </trans>
-    </entry>
-       <entry>
-        <base>S0040MB</base>
-        <trans>
-        40MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0050MB</base>
-        <trans>
-        50MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0075MB</base>
-        <trans>
-        75MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0100MB</base>
-        <trans>
-        100MB
-        </trans>
-    </entry>
-        <entry>
-        <base>S0125MB</base>
-        <trans>
-        125MB
-        </trans>
-    </entry>
-    <entry>
-        <base>S0150MB</base>
-        <trans>
-        150MB
-        </trans>
-    </entry>
-     <entry>
-        <base>S0175MB</base>
-        <trans>
-        175MB
-        </trans>
-    </entry>
-           <entry>
-        <base>S0200MB</base>
-        <trans>
-        200MB
-        </trans>
-        </entry>
-            <entry>
-        <base>S0300MB</base>
-        <trans>
-        300MB
-        </trans>
-    </entry>
-       <entry>
-        <base>S0400MB</base>
-        <trans>
-        400MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0500MB</base>
-        <trans>
-        500MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0600MB</base>
-        <trans>
-        600MB
-        </trans>
-    </entry>
-          <entry>
-        <base>S0700MB</base>
-        <trans>
-        700MB
-        </trans>
-    </entry>
-    <entry>
-        <base>S0800MB</base>
-        <trans>
-        800MB
-        </trans>
-    </entry>
-           <entry>
-        <base>S0900MB</base>
-        <trans>
-        900MB
-        </trans>
-    </entry>
-           <entry>
-        <base>S1000MB</base>
-        <trans>
-        1000MB
-        </trans>
-    </entry>
-       <entry>
-        <base>S1250MB</base>
-        <trans>
-        1250MB
-        </trans>
-    </entry>
-      <entry>
-        <base>S1500MB</base>
-        <trans>
-        1500MB
-       </trans>
-    </entry>
-    <entry>
-        <base>S1750MB</base>
-        <trans>
-        1750MB
-        </trans>
-    </entry>
-    <entry>
-        <base>S2000MB</base>
-        <trans>
-        2000MB
-        </trans>
-    </entry>
-      <entry>
-        <base>MEMORYLIMIT</base>
-        <trans>
-        Php memory limit (memory_limit)
-        </trans>
-    </entry>
-       <entry>
-        <base>UPLOADMAXFILESIZE</base>
-        <trans>
-        Maximum upload size (upload_max_filesize)
-        </trans>
-    </entry>
-       <entry>
-        <base>POSTMAXSIZE</base>
-        <trans>
-        Maximum post size (post_max_size)
-        </trans>
-    </entry>
-       <entry>
-        <base>MAXEXECUTIONTIME</base>
-        <trans>
-        Maximum execution time (max_execution_time)
-        </trans>
-    </entry>
-      <entry>
-    <base>UPLOADMAXFILESIZE_IS_GREATER_THAN_POSTMAXSIZE</base>
-        <trans>
-               The maximum upload file size is greater than the maximum post size form
-         </trans>
-     </entry>
-           <entry>
-	<base>PHPBASEDIR</base>
-        <trans>
-               Enter Path(s) for PHP Scripts (PHPBasedir) 
-        </trans>
-    </entry>
-            <entry>
-        <base>DESC_PHPBASEDIR</base>
-        <trans>
-            You must specify the full path to the I-bay or remove the content to get back to default values : /home/e-smith/files/ibays/ibay_name/:/new/path:/other/path
-        </trans>
-    </entry>
-        <entry>
-        <base>DESC_DAV_SETTINGS</base>
-        <trans>
-            The following settings control the WebDav files transfer protocol of this I-bay.
-        </trans>
-    </entry>
-    <entry>
-        <base>ENABLE_MOD_DAV</base>
-        <trans>
-        Allow WebDav
+         anongid : Set the GID of the remote group share(leave blanck if not used)
         </trans>
     </entry>
 </lexicon>
