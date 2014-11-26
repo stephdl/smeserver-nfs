@@ -108,6 +108,12 @@ __DATA__
         <field type="select" id="nfsstatus" value="disabled" options="'disabled' => 'DISABLED', 'enabled' => 'ENABLED'">
             <label>NFSSTATUS</label>
         </field>
+      <field
+            type="literal"
+            id="descnfsclient"
+            value="">
+            <description>DESC_NFSCLIENT</description>
+       </field>
         <field type="text" id="nfsclient" size="80" >
             <label>NFSCLIENT</label>
         </field>

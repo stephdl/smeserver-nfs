@@ -9,7 +9,7 @@
     </entry>
 <entry>
 <base>nfsshare</base>
-<trans>I-bays - Nfs Share</trans>
+<trans>I-bays - NFS Share</trans>
 </entry> 
     <entry>
         <base>FIRSTPAGE_DESC</base>
@@ -26,7 +26,7 @@
     <entry>
         <base>NAME_FIELD_DESC</base>
         <trans>
-These parameters will be effective only if the status of nfs below is set to nfs.
+        These parameters will be effective only if the status of nfs below is set to nfs.  The exports are in /home/e-smith/files/ibays/IBAYNAME/files
         </trans>
     </entry>
     <entry>
@@ -60,25 +60,6 @@ These parameters will be effective only if the status of nfs below is set to nfs
         </trans>
     </entry>
     <entry>
-        <base>VIRTUAL_HOST_MESSAGE</base>
-        <trans>
-            The following virtual domains were using this information
-            bay as their content and will be changed to the primary web 
-            site (you can change them to something else afterward).
-        </trans>
-    </entry>
-    <entry>
-        <base>VHOST_MESSAGE</base>
-        <trans>
-            <![CDATA[
-            <P>The following virtual domains were using this information bay 
-                as their content and will be changed to the primary web site 
-                (you can change them to something else afterward):</P>
-            <ul>{$vhostList}</ul>
-            ]]>
-        </trans>
-    </entry>
-    <entry>
         <base>Information bays</base>
         <trans>Information bays</trans>
     </entry>
@@ -94,10 +75,17 @@ These parameters will be effective only if the status of nfs below is set to nfs
         Enable the NFS Share for this Information bay.
         </trans>
     </entry>
+         <entry>
+        <base>DESC_NFSCLIENT</base>
+        <trans>
+        NFS clients may be specified by 'private' for the local network or by the IP(s)/host(s)/*.domain(s) separated by a coma ','. You can also use the wildcards '?' and '*' at your own risks
+        </trans>
+    </entry>
+    
     <entry>
         <base>NFSCLIENT</base>
         <trans>
-        NFS clients may be specified by 'private' for the local network or by the IP/host/domain separated by a coma ','.
+             The host(s) or network to which the export is being shared 
         </trans>
     </entry>
         <entry>
