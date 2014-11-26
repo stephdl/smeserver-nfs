@@ -13,7 +13,8 @@ License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
-Requires: e-smith-base >= 9 
+Requires: e-smith-base
+Requires: smeserver-release >= 9
 Requires: nfs-utils
 Requires: nfs4-acl-tools
 Requires: e-smith-lib 
