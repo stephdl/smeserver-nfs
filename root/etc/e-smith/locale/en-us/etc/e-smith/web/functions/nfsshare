@@ -1,0 +1,254 @@
+ <!-- vim: ft=xml ts=4 sw=8 noet:
+-->
+<lexicon lang="en-us" params="getExtraParams()">
+    <entry>
+        <base>FORM_TITLE</base>
+        <trans>
+               NFS Share Contrib
+    </trans>
+    </entry>
+<entry>
+<base>nfsshare</base>
+<trans>I-bays - NFS Share</trans>
+</entry> 
+    <entry>
+        <base>FIRSTPAGE_DESC</base>
+        <trans>
+         Manage NFS Share settings.
+        </trans>
+    </entry>
+    <entry>
+        <base>ADD_TITLE</base>
+        <trans>
+            Manage NFS Share settings.
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_FIELD_DESC</base>
+        <trans>
+<![CDATA[ These parameters will be effective only if the share is enabled.  The share is in /home/e-smith/files/ibays/{$name}/files ]]>
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_LABEL</base>
+        <trans>
+            Information bay name
+        </trans>
+    </entry>
+    <entry>
+        <base>NO_IBAYS</base>
+        <trans>
+            There are no I-bays currently configured.
+        </trans>
+    </entry>
+    <entry>
+        <base>CANT_FIND_IBAY</base>
+        <trans>
+            Can't find account for {$name} (does it exist?)
+        </trans>
+    </entry>
+    <entry>
+        <base>ERROR_WHILE_MODIFYING_IBAY</base>
+        <trans>
+            An error occurred while modifying the I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>SUCCESSFULLY_MODIFIED_IBAY</base>
+        <trans>
+            Successfully modified I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>Information bays</base>
+        <trans>Information bays</trans>
+    </entry>
+     <entry>
+        <base>DESC_ANONUIDGID</base>
+        <trans>
+            These options explicitly set the uid and gid of the share account, where you might want all requests appear to be from one user or one group.
+        </trans>
+    </entry>
+     <entry>
+        <base>NFSSTATUS</base>
+        <trans>
+        Enable the NFS Share.
+        </trans>
+    </entry>
+         <entry>
+        <base>DESC_NFSCLIENT</base>
+        <trans>
+        For writing permissions and allowing the root user, you must configure a list of IP being part of the local network and separated by a ':'.
+        </trans>
+    </entry>
+   <entry>
+    <base>NFSCLIENT_NEED_A_:_AS_SEPARATOR</base>
+    <trans>
+       You must use a ':' as IP separator.
+    </trans>
+  </entry>
+   <entry>
+   <base>NFSCLIENT_FIELD_IS_NOT_IN_ANY_LOCALNETWORK</base>
+    <trans>
+     You must set IP being part of your local network with the separator ':'.
+   </trans>
+  </entry>
+   <entry>
+   <base>NFSCLIENT_FIELD_IS_NOT_AN_IP</base>
+   <trans>
+   You must set real IP with the separator ':'.
+   </trans>
+ </entry>
+   <entry>
+   <base>ENABLE_LOCALNETWORK</base>
+   <trans>
+   Share on local network with secure permissions.
+   </trans>
+  </entry>
+    <entry>
+        <base>NFSCLIENT</base>
+        <trans>
+             NFS Client(s) allowed. 
+        </trans>
+    </entry>
+        <entry>
+        <base>NFSRW</base>
+        <trans>
+     The exported file system permissions.
+        </trans>
+    </entry>
+         <entry>
+        <base>RO</base>
+        <trans>
+         Read Only on the exported file
+        </trans>
+    </entry>
+         <entry>
+        <base>RW</base>
+        <trans>
+        Read and Write on the exported file
+        </trans>
+    </entry>   
+    <entry>
+        <base>NFSSYNC</base>
+        <trans>
+      Changes can be written (a)synchronously.
+        </trans>
+   </entry>
+       <entry>
+        <base>SYNC</base>
+        <trans>
+         synchronous writes
+        </trans>
+    </entry>
+       <entry>
+        <base>ASYNC</base>
+        <trans>
+         asynchronous writes
+        </trans>
+    </entry>
+    <entry>
+        <base>NFSDELAY</base>
+        <trans>
+        delays disk writes if requests are small.
+        </trans>
+   </entry>
+       <entry>
+        <base>WDELAY</base>
+        <trans>
+         wdelay, delays disk writes
+        </trans>
+    </entry>
+   
+     <entry>
+        <base>NO_WDELAY</base>
+        <trans>
+         no_wdelay, Write as soon as possible
+        </trans>
+    </entry>
+    <entry>
+        <base>NFSSQUASH</base>
+        <trans>
+        Squashe the power of the remote users.
+        </trans>
+    </entry>
+       <entry>
+        <base>ROOT_SQUASH</base>
+        <trans>
+         root_squash, Convert root to the anonymous.
+        </trans>
+    </entry>
+       <entry>
+        <base>NO_ROOT_SQUASH</base>
+        <trans>
+         no_root_squash, let root be root
+        </trans>
+    </entry>
+       <entry>
+        <base>ALL_SQUASH</base>
+        <trans>
+         all_squash, convert all users to anonymous
+        </trans>
+    </entry>
+       <entry>
+        <base>NFSANONUID</base>
+        <trans>
+         anonuid : Set the UID (leave blank if not used)
+        </trans>
+    </entry>
+     <entry>
+        <base>NFSANONGID</base>
+        <trans>
+         anongid : Set the GID (leave blank if not used)
+        </trans>
+    </entry>
+   <entry>
+       <base>NFSHIDE</base>
+       <trans>
+        Browse parent and child folders
+        </trans>
+   </entry>
+   <entry>
+     <base>HIDE</base>
+     <trans>
+        hide the parent folder
+     </trans>
+   </entry>
+   <entry>
+   <base>NOHIDE</base>
+       <trans>
+        nohide the parent folder
+       </trans>
+   </entry>
+    <entry>
+       <base>NFSSECURE</base>
+       <trans>
+       Require requests on port less than 1024
+       </trans>
+   </entry>
+   <entry>
+   <base>SECURE</base>
+      <trans>
+      secure  : port less than 1024
+      </trans>
+   </entry>
+   <entry>
+   <base>INSECURE</base>
+       <trans>
+            insecure  : port above than 1024
+      </trans>
+   </entry>
+   <entry>
+    <base>THE_GID_HAS_TO_BE_A_POSITIVE_INTEGER_INFERIOR_4294967295</base>
+   <trans>
+   The GID has to be a positive integer inferior at 4,294,967,295
+    </trans>
+  </entry>
+  <entry>
+ <base>THE_UID_HAS_TO_BE_A_POSITIVE_INTEGER_INFERIOR_4294967295</base>
+   <trans>
+   The UID has to be a positive integer inferior at 4,294,967,295
+   </trans>
+ </entry>
+</lexicon>
+
