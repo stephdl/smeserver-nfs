@@ -2,6 +2,13 @@
 
 use esmith::Build::CreateLinks qw(:all);
 
+#--------------------------------------------------
+## functions for manager panel
+##--------------------------------------------------
+panel_link("nfsshare", "manager");
+
+
+
 foreach (qw(sysconfig/nfs exports))
 {
     templates2events("/etc/$_", qw(
