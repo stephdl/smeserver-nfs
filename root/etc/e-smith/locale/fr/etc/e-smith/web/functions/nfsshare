@@ -1,0 +1,444 @@
+<!-- vim: ft=xml ts=4 sw=8 noet:
+-->
+<lexicon lang="fr">
+    <entry>
+        <base>FORM_TITLE</base>
+        <trans>
+               Hébergement Web des I-bays
+        </trans>
+    </entry> 
+    <entry>
+       <base>webhosting</base>
+        <trans>
+               I-bays - paramètres Web
+        </trans>
+    </entry>
+    <entry>
+        <base>FIRSTPAGE_DESC</base>
+        <trans>
+         Gérer les paramètres système d'Apache et de PHP
+        </trans>
+    </entry>
+    <entry>
+        <base>ADD_TITLE</base>
+        <trans>
+            Modifier les paramètres d'Apache et de PHP.
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_FIELD_DESC</base>
+        <trans>
+Ces paramètres ne seront effectifs que si l'accès par Internet est autorisé pour l'i-bay concernée dans son panneau de configuration.
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_LABEL</base>
+        <trans>
+            Nom de l'I-bay
+        </trans>
+    </entry>
+    <entry>
+        <base>NO_IBAYS</base>
+        <trans>
+            Il n'y a pas d'I-bay configuré.
+        </trans>
+    </entry>
+    <entry>
+        <base>CANT_FIND_IBAY</base>
+        <trans>
+            Nous ne pouvons pas trouver l'I-bay {$name} (Existe t'elle?)
+        </trans>
+    </entry>
+    <entry>
+        <base>ERROR_WHILE_MODIFYING_IBAY</base>
+        <trans>
+             Une erreur s'est produite lors de la modification de l'i-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>SUCCESSFULLY_MODIFIED_IBAY</base>
+        <trans>
+            L'I-bay a été modifié avec succès.
+        </trans>
+    </entry>
+    <entry>
+        <base>VIRTUAL_HOST_MESSAGE</base>
+        <trans>
+            Les domaines virtuels suivants utilisent cette I-bay pour stocker leur contenu et seront changés sur le site Web principal vous pouvez les utiliser pour autre chose par la suite).
+        </trans>
+    </entry>
+    <entry>
+        <base>VHOST_MESSAGE</base>
+        <trans>
+            <![CDATA[
+            <P>Les domaines virtuels suivants utilisent cette I-bay pour leur contenu et seront changés sur le site Web principal (vous pouvez les utiliser pour autre chose par la suite):</P>
+            <ul>{$vhostList}</ul>
+            ]]>
+        </trans>
+    </entry>
+    <entry>
+        <base>Information bays</base>
+        <trans>I-bays</trans>
+    </entry>
+     <entry>
+        <base>DESC_HTTP_SETTINGS</base>
+        <trans>
+            Les paramètres suivants permettent de contrôler l'accès de cette I-bay en utilisant le protocole HTTP/HTTPS.
+        </trans>
+    </entry>
+        <entry>
+        <base>DESC_PHP_SETTINGS</base>
+        <trans>
+            Les paramètres suivants fixent les limites d'utilisation du serveur WEB par PHP dans cette I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>INDEXES</base>
+        <trans>
+        permettre de lister les répertoire (+Indexes)
+        </trans>
+    </entry>
+    <entry>
+        <base>FOLLOWSYMLINKS</base>
+        <trans>
+        Suivre les liens symboliques (FollowSymLinks)
+        </trans>
+    </entry>
+    <entry>
+        <base>ALLOWOVERRIDE</base>
+        <trans>
+        Autoriser l'utilisation des .htaccess (AllowOverride)
+        </trans>
+   </entry>
+    <entry>
+        <base>ALLOWURLFOPEN</base>
+        <trans>
+        permettre l'accès à distance aux fichiers (allow_url_fopen)
+        </trans>
+    </entry>
+  <entry>
+        <base>DEFAULT</base>
+        <trans>
+        Valeur Par défaut
+        </trans>
+    </entry>
+        <entry>
+        <base>M0064MB</base>
+        <trans>
+        64MB
+        </trans>
+    </entry>  
+          <entry>
+        <base>M0128MB</base>
+        <trans>
+        128MB
+        </trans>
+    </entry>
+          <entry>
+        <base>M0256MB</base>
+        <trans>
+        256MB
+        </trans>
+    </entry>
+          <entry>
+        <base>M0512MB</base>
+        <trans>
+        512MB
+        </trans>
+    </entry>
+    <entry>
+        <base>M0768MB</base>
+        <trans>
+        768MB
+        </trans>
+    </entry>
+           <entry>
+        <base>M1024MB</base>
+        <trans>
+        1024MB
+        </trans>
+    </entry>
+     <entry>
+        <base>T001m</base>
+        <trans>
+        1 minute
+        </trans>
+    </entry>
+    <entry>
+        <base>T002m</base>
+        <trans>
+        2 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T003m</base>
+        <trans>
+        3 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T004m</base>
+        <trans>
+        4 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T005m</base>
+        <trans>
+        5 minutes
+        </trans>
+    </entry>
+    <entry>
+        <base>T006m</base>
+        <trans>
+        6 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T007m</base>
+        <trans>
+        7 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T008m</base>
+        <trans>
+        8 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T009m</base>
+        <trans>
+        9 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T010m</base>
+        <trans>
+        10 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T015m</base>
+        <trans>
+        15 minutes
+       </trans>
+    </entry>
+          <entry>
+        <base>T030m</base>
+        <trans>
+        30 minutes
+        </trans>
+    </entry>
+           <entry>
+        <base>T045m</base>
+        <trans>
+        45 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T060m</base>
+        <trans>
+        Une heure
+        </trans>
+    </entry>
+    <entry>
+        <base>T120m</base>
+        <trans>
+        Deux heures
+        </trans>
+    </entry>
+     <entry>
+        <base>UNLIMITED</base>
+        <trans>
+        Illimité
+        </trans>
+    </entry>
+      <entry>
+        <base>S0020MB</base>
+        <trans>
+        20MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0030MB</base>
+        <trans>
+        30MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S0040MB</base>
+        <trans>
+        40MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0050MB</base>
+        <trans>
+        50MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0075MB</base>
+        <trans>
+        75MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0100MB</base>
+        <trans>
+        100MB
+        </trans>
+    </entry>
+        <entry>
+        <base>S0125MB</base>
+        <trans>
+        125MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0150MB</base>
+        <trans>
+        150MB
+        </trans>
+    </entry>
+     <entry>
+        <base>S0175MB</base>
+        <trans>
+        175MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S0200MB</base>
+        <trans>
+        200MB
+        </trans>
+        </entry>
+            <entry>
+        <base>S0300MB</base>
+        <trans>
+        300MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S0400MB</base>
+        <trans>
+        400MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0500MB</base>
+        <trans>
+        500MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0600MB</base>
+        <trans>
+        600MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0700MB</base>
+        <trans>
+        700MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0800MB</base>
+        <trans>
+        800MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S0900MB</base>
+        <trans>
+        900MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S1000MB</base>
+        <trans>
+        1000MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S1250MB</base>
+        <trans>
+        1250MB
+        </trans>
+    </entry>
+      <entry>
+        <base>S1500MB</base>
+        <trans>
+        1500MB
+       </trans>
+    </entry>
+    <entry>
+        <base>S1750MB</base>
+        <trans>
+        1750MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S2000MB</base>
+        <trans>
+        2000MB
+        </trans>
+    </entry>
+      <entry>
+        <base>MEMORYLIMIT</base>
+        <trans>
+        Limite maximale de mémoire (memory_limit)
+        </trans>
+    </entry>
+       <entry>
+        <base>UPLOADMAXFILESIZE</base>
+        <trans>
+        Taille maximale de téléversement (upload_max_filesize)
+        </trans>
+    </entry>
+       <entry>
+        <base>POSTMAXSIZE</base>
+        <trans>
+        Taille maximale des formulaires de téléversement (post_max_size)
+        </trans>
+    </entry>
+       <entry>
+        <base>MAXEXECUTIONTIME</base>
+        <trans>
+        Durée maximale d'éxecution (max_execution_time)
+        </trans>
+    </entry>
+      <entry>
+    <base>UPLOADMAXFILESIZE_IS_GREATER_THAN_POSTMAXSIZE</base>
+        <trans>
+               La taille Maximale de téléversement est plus grande que la taille maximale des formulaires de téléversement.
+         </trans>
+     </entry>
+           <entry>
+	<base>PHPBASEDIR</base>
+        <trans>
+               Saississez une arborescence d'execution pour les scripts PHP (PHPBasedir)
+        </trans>
+    </entry>
+            <entry>
+        <base>DESC_PHPBASEDIR</base>
+        <trans>
+            Vous devez spécifier le chemin d'accès complet à l'I-bay où supprimer le contenu pour revenir aux valeurs par défaut : /home/e-smith/files/ibays/ibay_name/:/nouveau/chemin:/autre/chemin
+        </trans>
+    </entry>
+        <entry>
+        <base>DESC_DAV_SETTINGS</base>
+        <trans>
+            Vous pouvez autoriser le protocole de transfert de fichier WebDav pour cette I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>ENABLE_MOD_DAV</base>
+        <trans>
+        Autoriser WebDav
+        </trans>
+    </entry>
+</lexicon>
+

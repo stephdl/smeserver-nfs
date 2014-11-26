@@ -1,0 +1,446 @@
+<!-- vim: ft=xml ts=4 sw=8 noet:
+-->
+<lexicon lang="en-us">
+    <entry>
+        <base>FORM_TITLE</base>
+        <trans>
+               Web Hosting Contrib
+</trans>
+    </entry>
+<entry>
+<base>webhosting</base>
+<trans>I-bays - Web Hosting</trans>
+</entry> 
+    <entry>
+        <base>FIRSTPAGE_DESC</base>
+        <trans>
+         Manage Apache and PHP settings
+        </trans>
+    </entry>
+    <entry>
+        <base>ADD_TITLE</base>
+        <trans>
+            Modify Apache and PHP Settings.
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_FIELD_DESC</base>
+        <trans>
+These parameters will be effective only if the access from the web is allowed for the concerned I-bay in the informations bays panel.
+        </trans>
+    </entry>
+    <entry>
+        <base>NAME_LABEL</base>
+        <trans>
+            Information bay name
+        </trans>
+    </entry>
+    <entry>
+        <base>NO_IBAYS</base>
+        <trans>
+            There are no I-bays currently configured.
+        </trans>
+    </entry>
+    <entry>
+        <base>CANT_FIND_IBAY</base>
+        <trans>
+            Can't find account for {$name} (does it exist?)
+        </trans>
+    </entry>
+    <entry>
+        <base>ERROR_WHILE_MODIFYING_IBAY</base>
+        <trans>
+            An error occurred while modifying the I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>SUCCESSFULLY_MODIFIED_IBAY</base>
+        <trans>
+            Successfully modified I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>VIRTUAL_HOST_MESSAGE</base>
+        <trans>
+            The following virtual domains were using this information
+            bay as their content and will be changed to the primary web 
+            site (you can change them to something else afterward).
+        </trans>
+    </entry>
+    <entry>
+        <base>VHOST_MESSAGE</base>
+        <trans>
+            <![CDATA[
+            <P>The following virtual domains were using this information bay 
+                as their content and will be changed to the primary web site 
+                (you can change them to something else afterward):</P>
+            <ul>{$vhostList}</ul>
+            ]]>
+        </trans>
+    </entry>
+    <entry>
+        <base>Information bays</base>
+        <trans>Information bays</trans>
+    </entry>
+     <entry>
+        <base>DESC_HTTP_SETTINGS</base>
+        <trans>
+            The following settings control the access of this I-bay using the HTTP/HTTPS protocol.
+        </trans>
+    </entry>
+        <entry>
+        <base>DESC_PHP_SETTINGS</base>
+        <trans>
+            The following settings control the PHP values of this I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>INDEXES</base>
+        <trans>
+        Allow directory listing (+Indexes)
+        </trans>
+    </entry>
+    <entry>
+        <base>FOLLOWSYMLINKS</base>
+        <trans>
+        Follow symbolic links (FollowSymLinks)
+        </trans>
+    </entry>
+    <entry>
+        <base>ALLOWOVERRIDE</base>
+        <trans>
+        Allow .htaccess policy (AllowOverride)
+        </trans>
+   </entry>
+    <entry>
+        <base>ALLOWURLFOPEN</base>
+        <trans>
+        Allow access to remote files (Allow_url_fopen)
+        </trans>
+    </entry>
+  <entry>
+        <base>DEFAULT</base>
+        <trans>
+        Default value
+        </trans>
+    </entry>
+        <entry>
+        <base>M0064MB</base>
+        <trans>
+        64MB
+        </trans>
+    </entry>  
+          <entry>
+        <base>M0128MB</base>
+        <trans>
+        128MB
+        </trans>
+    </entry>
+          <entry>
+        <base>M0256MB</base>
+        <trans>
+        256MB
+        </trans>
+    </entry>
+          <entry>
+        <base>M0512MB</base>
+        <trans>
+        512MB
+        </trans>
+    </entry>
+    <entry>
+        <base>M0768MB</base>
+        <trans>
+        768MB
+        </trans>
+    </entry>
+           <entry>
+        <base>M1024MB</base>
+        <trans>
+        1024MB
+        </trans>
+    </entry>
+     <entry>
+        <base>T001m</base>
+        <trans>
+        1 minute
+        </trans>
+    </entry>
+    <entry>
+        <base>T002m</base>
+        <trans>
+        2 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T003m</base>
+        <trans>
+        3 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T004m</base>
+        <trans>
+        4 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T005m</base>
+        <trans>
+        5 minutes
+        </trans>
+    </entry>
+    <entry>
+        <base>T006m</base>
+        <trans>
+        6 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T007m</base>
+        <trans>
+        7 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T008m</base>
+        <trans>
+        8 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T009m</base>
+        <trans>
+        9 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T010m</base>
+        <trans>
+        10 minutes
+        </trans>
+    </entry>
+          <entry>
+        <base>T015m</base>
+        <trans>
+        15 minutes
+       </trans>
+    </entry>
+          <entry>
+        <base>T030m</base>
+        <trans>
+        30 minutes
+        </trans>
+    </entry>
+           <entry>
+        <base>T045m</base>
+        <trans>
+        45 minutes
+        </trans>
+    </entry>
+       <entry>
+        <base>T060m</base>
+        <trans>
+        One hour
+        </trans>
+    </entry>
+    <entry>
+        <base>T120m</base>
+        <trans>
+        Two hours
+        </trans>
+    </entry>
+     <entry>
+        <base>UNLIMITED</base>
+        <trans>
+        Unlimited
+        </trans>
+    </entry>
+      <entry>
+        <base>S0020MB</base>
+        <trans>
+        20MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0030MB</base>
+        <trans>
+        30MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S0040MB</base>
+        <trans>
+        40MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0050MB</base>
+        <trans>
+        50MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0075MB</base>
+        <trans>
+        75MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0100MB</base>
+        <trans>
+        100MB
+        </trans>
+    </entry>
+        <entry>
+        <base>S0125MB</base>
+        <trans>
+        125MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0150MB</base>
+        <trans>
+        150MB
+        </trans>
+    </entry>
+     <entry>
+        <base>S0175MB</base>
+        <trans>
+        175MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S0200MB</base>
+        <trans>
+        200MB
+        </trans>
+        </entry>
+            <entry>
+        <base>S0300MB</base>
+        <trans>
+        300MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S0400MB</base>
+        <trans>
+        400MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0500MB</base>
+        <trans>
+        500MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0600MB</base>
+        <trans>
+        600MB
+        </trans>
+    </entry>
+          <entry>
+        <base>S0700MB</base>
+        <trans>
+        700MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S0800MB</base>
+        <trans>
+        800MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S0900MB</base>
+        <trans>
+        900MB
+        </trans>
+    </entry>
+           <entry>
+        <base>S1000MB</base>
+        <trans>
+        1000MB
+        </trans>
+    </entry>
+       <entry>
+        <base>S1250MB</base>
+        <trans>
+        1250MB
+        </trans>
+    </entry>
+      <entry>
+        <base>S1500MB</base>
+        <trans>
+        1500MB
+       </trans>
+    </entry>
+    <entry>
+        <base>S1750MB</base>
+        <trans>
+        1750MB
+        </trans>
+    </entry>
+    <entry>
+        <base>S2000MB</base>
+        <trans>
+        2000MB
+        </trans>
+    </entry>
+      <entry>
+        <base>MEMORYLIMIT</base>
+        <trans>
+        Php memory limit (memory_limit)
+        </trans>
+    </entry>
+       <entry>
+        <base>UPLOADMAXFILESIZE</base>
+        <trans>
+        Maximum upload size (upload_max_filesize)
+        </trans>
+    </entry>
+       <entry>
+        <base>POSTMAXSIZE</base>
+        <trans>
+        Maximum post size (post_max_size)
+        </trans>
+    </entry>
+       <entry>
+        <base>MAXEXECUTIONTIME</base>
+        <trans>
+        Maximum execution time (max_execution_time)
+        </trans>
+    </entry>
+      <entry>
+    <base>UPLOADMAXFILESIZE_IS_GREATER_THAN_POSTMAXSIZE</base>
+        <trans>
+               The maximum upload file size is greater than the maximum post size form
+         </trans>
+     </entry>
+           <entry>
+	<base>PHPBASEDIR</base>
+        <trans>
+               Enter Path(s) for PHP Scripts (PHPBasedir) 
+        </trans>
+    </entry>
+            <entry>
+        <base>DESC_PHPBASEDIR</base>
+        <trans>
+            You must specify the full path to the I-bay or remove the content to get back to default values : /home/e-smith/files/ibays/ibay_name/:/new/path:/other/path
+        </trans>
+    </entry>
+        <entry>
+        <base>DESC_DAV_SETTINGS</base>
+        <trans>
+            The following settings control the WebDav files transfer protocol of this I-bay.
+        </trans>
+    </entry>
+    <entry>
+        <base>ENABLE_MOD_DAV</base>
+        <trans>
+        Allow WebDav
+        </trans>
+    </entry>
+</lexicon>
+

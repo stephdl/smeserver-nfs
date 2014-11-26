@@ -1,0 +1,151 @@
+#!/usr/bin/perl -wT
+
+# vim: ft=xml ts=4 sw=4 et:
+#----------------------------------------------------------------------
+# heading     : Collaboration
+# description : nfsshare
+# navigation  : 2000 2500
+# 
+# Copyright (c) 2001 Mitel Networks Corporation 
+#               2014 stephane de Labrusse <stephdl@de-labrusse.fr>
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 		
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 		
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA
+# 
+# Technical support for this program is available from e-smith, inc.
+# Please visit our web site www.e-smith.com for details.
+#----------------------------------------------------------------------
+
+use strict;
+use esmith::FormMagick::Panel::nfsshare;
+
+my $fm = esmith::FormMagick::Panel::nfsshare->new();
+$fm->display();
+
+=pod
+
+=head1 NAME
+
+nfsshare -- manage nfs share
+
+=head2 DESCRIPTION
+
+This screen allows the administrator to manage information bays.
+
+=begin testing
+
+use esmith::FormMagick::Tester;
+use esmith::TestUtils;
+use esmith::TestUtils;
+use esmith::ConfigDB;
+use esmith::AccountsDB;
+
+my $panel = $Original_File;
+my $ua = esmith::FormMagick::Tester->new();
+
+my $c = esmith::ConfigDB->open();
+my $a = esmith::AccountsDB->open();
+
+is  (mode($panel), '4750',              "Check permissions on script");
+ok  ($ua->get_panel($panel),            "ABOUT TO RUN L10N TESTS");
+is  ($ua->{status}, 200,                "200 OK");
+#like($ua->{content}, qr/FORM_TITLE/,    "Saw untranslated form title");
+ok  ($ua->set_language("en"),           "Set language to English");
+ok  ($ua->get_panel($panel),            "Get panel");
+is  ($ua->{status}, 200,                "200 OK");
+like($ua->{content}, qr/Information bays/, "Saw translated form title");
+
+ok  ($ua->get_panel($panel),            "ABOUT TO TEST CREATING IBAY");
+ok  ($ua->follow("Click here"),         "Follow 'create ibay' link");
+is  ($ua->{status}, 200,                "200 OK");
+like($ua->{content}, qr/Create a new information bay/,   "Saw page title");
+like($ua->{content}, qr/Brief description/,    "Saw description field");
+like($ua->{content}, qr/Group/,                "Saw group field");
+like($ua->{content}, qr/User access via file/, "Saw user access field");
+like($ua->{content}, qr/Public access via/,    "Saw Public access field");
+like($ua->{content}, qr/Add/,                  "Saw add button");
+
+SKIP: {
+
+    skip 10, "Unsafe!" unless destruction_ok();
+
+    ok  ($ua->follow("Click here"),         "ACTUALLY ADDING A NETWORK");
+    $ua->field();
+    $ua->click("Add");
+    like($ua->{content}, qr/Successfully added ibay/,  "Saw success message");
+
+    ok  ($ua->follow("Remove"),         "REMOVING NETWORK");
+    like($ua->{content}, qr/Are you sure/,  "Saw confirmation message");
+    $ua->click("Remove");
+    like($ua->{content}, qr/Successfully deleted/,  "Saw success message");
+
+}
+
+
+=cut
+
+__DATA__
+<form title="FORM_TITLE" header="/etc/e-smith/web/common/head.tmpl" footer="/etc/e-smith/web/common/foot.tmpl">
+    <page name="First" pre-event="print_status_message()">
+         <title>FIRSTPAGE_DESC</title>
+        <subroutine src="print_ibay_table()" />
+    </page>
+    <page name="CreateModify" pre-event="turn_off_buttons()" post-event="handle_ibays()">
+
+        <title>ADD_TITLE</title>
+        <subroutine src="print_ibay_name_field()" />
+ 
+        <field type="select" id="nfsstatus" value="disabled" options="'disabled' => 'DISABLED', 'enabled' => 'ENABLED'">
+            <label>NFSSTATUS</label>
+        </field>
+        <field type="text" id="nfsclient" size="80" >
+            <label>NFSCLIENT</label>
+        </field>
+        <field type="select" id="nfsrw" value="ro" options="'ro' => 'RO', 'rw' => 'RO'">
+           <label>NFSRW</label>
+        </field>
+          <field type="select" id="nfssync" value="sync" options="'sync' => 'SYNC', 'async' => 'ASYNC'">
+            <label>NFSSYNC</label>
+        </field> 
+         <field type="select" id="nfswdelay" value="wdelay" options="'wdelay' => 'WDELAY', 'no_wdelay' => 'NO_WDELAY'">
+            <label>NFSDELAY</label>
+        </field> 
+         <field type="select" id="nfssquash" value="root_squash" options="'root_squash' => 'ROOT_SQUASH', 'no_root_squash' => 'NO_ROOT_SQUASH', 'all_squash' => 'ALL_SQUASH'">
+            <label>NFSSQUASH</label>
+        </field> 
+        <field type="text" id="nfsanonuid" >
+            <label>NFSANONUID</label>
+        </field>
+        <field type="text" id="nfsanongid"  >
+            <label>NFSANONGID</label>
+        </field>
+        <field
+            type="literal"
+            id="phpbasedirdesc"
+            value="">
+            <description>DESC_PHPBASEDIR</description>
+       </field>
+
+
+        <field
+            type="literal"
+            id="DAVdesc"
+            value="">
+            <description>DESC_DAV_SETTINGS</description>
+        </field>
+
+          <subroutine src="print_save_or_add_button()" />
+    </page>
+ 
+</form>
+
