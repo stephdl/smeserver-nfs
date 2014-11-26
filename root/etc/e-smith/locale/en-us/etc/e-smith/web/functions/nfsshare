@@ -78,7 +78,8 @@
          <entry>
         <base>DESC_NFSCLIENT</base>
         <trans>
-        NFS clients may be specified by 'private' for the local network or by the IP(s)/host(s)/*.domain(s) separated by a coma ','. You can also use the wildcards '?' and '*' at your own risks
+        NFS clients may be restricted to the local network by 'private', but you can use also the IP(s)/host(s)/*.domain(s) separated by a coma ','. 
+        You can also use the wildcards '?' and '*' at your own risks
         </trans>
     </entry>
     
@@ -91,80 +92,80 @@
         <entry>
         <base>NFSRW</base>
         <trans>
-        This settings is to mount the share in read only or with read and write permissions
+     The exported file system permissions(ro/rw)
         </trans>
     </entry>
          <entry>
         <base>RO</base>
         <trans>
-         Read Only
+         Read Only on the exported file
         </trans>
     </entry>
          <entry>
         <base>RW</base>
         <trans>
-        Read and Write
+        Read and Write on the exported file
         </trans>
     </entry>   
     <entry>
         <base>NFSSYNC</base>
         <trans>
-       The NFS server will not reply to requests before changes are written to disk.
+      Changes can be written before to answer to other requests(sync/async).
         </trans>
    </entry>
        <entry>
         <base>SYNC</base>
         <trans>
-         sync
+         synchronous writes
         </trans>
     </entry>
        <entry>
         <base>ASYNC</base>
         <trans>
-         async
+         asynchronous writes
         </trans>
     </entry>
     <entry>
         <base>NFSDELAY</base>
         <trans>
-        The server will delay writing to the disk if a write request is imminent.
+        delays disk writes if NFS requests are small(wdelay/no_wdelay).
         </trans>
    </entry>
        <entry>
         <base>WDELAY</base>
         <trans>
-         wdelay
+         wdelay, delays disk writes
         </trans>
     </entry>
    
      <entry>
         <base>NO_WDELAY</base>
         <trans>
-         no_wdelay
+         no_wdelay, Write as soon as possible
         </trans>
     </entry>
     <entry>
         <base>NFSSQUASH</base>
         <trans>
-        This "squashes" the power of the remote  user to the lowest local user.
+        This "squashes" the power of the remote user to the anonymous local user.
         </trans>
     </entry>
        <entry>
         <base>ROOT_SQUASH</base>
         <trans>
-         root_squash, squash the root user
+         root_squash, Convert root to the anonymous.
         </trans>
     </entry>
        <entry>
         <base>NO_ROOT_SQUASH</base>
         <trans>
-         no_root_squash, don't squash the root user
+         no_root_squash, let root be root
         </trans>
     </entry>
        <entry>
         <base>ALL_SQUASH</base>
         <trans>
-         all_squash, squash all users
+         all_squash, convert all users to anonymous
         </trans>
     </entry>
        <entry>
