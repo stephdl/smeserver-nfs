@@ -48,10 +48,15 @@
                 my $nfs_options = 'nohide' . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
                                           . $nfssquash;
 
-                $nfs_options = 'nohide' . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ',' 
-                                          . $nfssquash . ',' . "anonuid=$anonuid" . ',' . "anongid=$anongid"
-                                                         if ( ($anonuid ne '') && ($anongid ne '')) ;
+                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if ($anonuid =~ m/(\d*)/);
  
+
+                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if ($anongid =~ m/(\d*)/);
+
+
+
+
+
                 #Then we retrieve the name of the ebay
 		my $key = $ibay->key;
 
