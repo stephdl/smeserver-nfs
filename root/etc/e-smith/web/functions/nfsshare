@@ -129,6 +129,12 @@ __DATA__
          <field type="select" id="nfssquash" value="root_squash" options="'root_squash' => 'ROOT_SQUASH', 'no_root_squash' => 'NO_ROOT_SQUASH', 'all_squash' => 'ALL_SQUASH'">
             <label>NFSSQUASH</label>
         </field> 
+        <field type="select" id="nfshide" value="hide" options="'hide' => 'HIDE', 'nohide' => 'NOHIDE'">
+            <label>NFSHIDE</label>
+           </field>
+        <field type="select" id="nfssecure" value="secure" options="'secure' => 'SECURE', 'insecure' => 'INSECURE'">
+            <label>NFSSECURE</label>
+           </field>
        <field
             type="literal"
             id="anonuidgiddesc"

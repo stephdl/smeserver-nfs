@@ -180,5 +180,42 @@
          anongid : Set the GID (leave blank if not used)
         </trans>
     </entry>
+   <entry>
+       <base>NFSHIDE</base>
+       <trans>
+        Browse parent and child folders
+        </trans>
+   </entry>
+   <entry>
+     <base>HIDE</base>
+     <trans>
+        hide the parent folder
+     </trans>
+   </entry>
+   <entry>
+   <base>NOHIDE</base>
+       <trans>
+        nohide the parent folder
+       </trans>
+   </entry>
+    <entry>
+       <base>NFSSECURE</base>
+       <trans>
+       Require requests on port less than 1024
+       </trans>
+   </entry>
+   <entry>
+   <base>SECURE</base>
+      <trans>
+      secure  : port less than 1024
+      </trans>
+   </entry>
+   <entry>
+   <base>INSECURE</base>
+       <trans>
+            insecure  : port above than 1024
+      </trans>
+   </entry>
+
 </lexicon>
 

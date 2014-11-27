@@ -28,7 +28,6 @@ our @EXPORT = qw(
     handle_ibays
     print_save_or_add_button
     wherenext
-    validate_up_post
 );
 
 our $VERSION = sprintf '%d.%03d', q$Revision: 1.8 $ =~ /: (\d+).(\d+)/;
@@ -222,6 +221,10 @@ sub print_ibay_name_field {
                 ($rec->prop('NfsAnonUid'))); 
             $q->param(-name=>'nfsanongid',-value=>
                 ($rec->prop('NfsAnonGid')));    
+            $q->param(-name=>'nfshide',-value=>
+                ($rec->prop('NfsHide')));
+            $q->param(-name=>'nfssecure',-value=>
+                ($rec->prop('NfsSecure')));
         }
     } else {
         print qq(
@@ -323,14 +326,16 @@ sub modify_ibay {
     if (my $acct = $accountdb->get($name)) {
         if ($acct->prop('type') eq 'ibay') {
             $acct->merge_props(
-                NfsStatus         => $self->cgi->param('nfsstatus'),
-                NfsClient  => $self->cgi->param('nfsclient'),   
-                NfsRW   => $self->cgi->param('nfsrw'),
-                NfsSync   => $self->cgi->param('nfssync'), 
-                NfsWdelay     => $self->cgi->param('nfswdelay'),    
-                NfsSquash   => $self->cgi->param('nfssquash'), 
-                NfsAnonUid     => $self->cgi->param('nfsanonuid'), 
+                NfsStatus      => $self->cgi->param('nfsstatus'),
+                NfsClient      => $self->cgi->param('nfsclient'),
+                NfsRW          => $self->cgi->param('nfsrw'),
+                NfsSync        => $self->cgi->param('nfssync'),
+                NfsWdelay      => $self->cgi->param('nfswdelay'),
+                NfsSquash      => $self->cgi->param('nfssquash'),
+                NfsAnonUid     => $self->cgi->param('nfsanonuid'),
                 NfsAnonGid     => $self->cgi->param('nfsanongid'),
+                NfsSecure      => $self->cgi->param('nfssecure'),
+                NfsHide        => $self->cgi->param('nfshide'),
              );
 
             # Untaint $name before use in system()

@@ -34,8 +34,6 @@
                 my $nfsclient = $ibay->prop("NfsClient") || "none";
 		$nfsclient = $localAccess if (($nfsclient eq 'private') || ($nfsclient eq 'local'));
                 
-                #my $gid = $ibay->prop("Gid")||'';
-                #my $uid = $ibay->prop("Uid")||'';
 
                 #now we look about exports options
                 my $nfsrw           = $ibay->prop("NfsRW")       || 'ro';
@@ -44,17 +42,16 @@
                 my $nfssquash       = $ibay->prop("NfsSquash")   || 'root_squash';
                 my $anonuid         = $ibay->prop("NfsAnonUid")  || '';
                 my $anongid         = $ibay->prop("NfsAnonGid")  || '';
-                
-                my $nfs_options = 'nohide' . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
+                my $secure          = $ibay->prop("NfsSecure")   || 'secure';
+                my $hide            = $ibay->prop("NfsHide")     || 'nohide';
+
+                my $nfs_options = $secure . ',' . $hide . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
                                           . $nfssquash;
 
-                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if ($anonuid =~ m/(\d*)/);
+                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if ($anonuid =~ m/(\d+)/);
  
 
-                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if ($anongid =~ m/(\d*)/);
-
-
-
+                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if ($anongid =~ m/(\d+)/);
 
 
                 #Then we retrieve the name of the ebay
