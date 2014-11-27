@@ -48,10 +48,9 @@
                 my $nfs_options = $secure . ',' . $hide . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
                                           . $nfssquash;
 
-                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if ($anonuid =~ m/(\d+)/);
- 
+                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if (($anonuid =~ m/(\d+)/) && ($anonuid !~ m/(\D+)/));
 
-                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if ($anongid =~ m/(\d+)/);
+                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if (($anongid =~ m/(\d+)/) && ($anongid !~ m/(\D+)/));
 
 
                 #Then we retrieve the name of the ebay
