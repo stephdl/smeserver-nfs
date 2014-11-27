@@ -68,6 +68,7 @@
 
                              foreach my $IP (@IP) 
                                    {
+                                      $IP = $localAccess if (($IP eq 'private') || ($IP eq 'local'));
                                       $OUT .=  " $IP($nfs_options)";
                                    }
                           }
