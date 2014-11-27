@@ -26,7 +26,7 @@
     <entry>
         <base>NAME_FIELD_DESC</base>
         <trans>
-        These parameters will be effective only if the share status  is enabled.  The share is in /home/e-smith/files/ibays/{$name}/files
+        These parameters will be effective only if the share status  is enabled.  The share is in /home/e-smith/files/ibays/IBAYNAME/files
         </trans>
     </entry>
     <entry>
