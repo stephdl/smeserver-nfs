@@ -171,13 +171,13 @@
        <entry>
         <base>NFSANONUID</base>
         <trans>
-         anonuid : Set the UID (leave blanck if not used)
+         anonuid : Set the UID (leave blank if not used)
         </trans>
     </entry>
      <entry>
         <base>NFSANONGID</base>
         <trans>
-         anongid : Set the GID (leave blanck if not used)
+         anongid : Set the GID (leave blank if not used)
         </trans>
     </entry>
 </lexicon>

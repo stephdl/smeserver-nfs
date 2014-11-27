@@ -114,7 +114,7 @@ __DATA__
             value="">
             <description>DESC_NFSCLIENT</description>
        </field>
-        <field type="text" id="nfsclient" size="80" >
+        <field type="text" id="nfsclient" validation="nonblank" size="80" >
             <label>NFSCLIENT</label>
         </field>
         <field type="select" id="nfsrw" value="ro" options="'ro' => 'RO', 'rw' => 'RW'">
