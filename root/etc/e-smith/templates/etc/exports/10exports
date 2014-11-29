@@ -1,79 +1,98 @@
 {
-        use strict;
-        use warnings;
-	use esmith::AccountsDB;
-        use esmith::ConfigDB;
-        use esmith::NetworksDB;
-        use Net::IPv4Addr;
+  use strict;
+  use warnings;
+  use esmith::AccountsDB;
+  use esmith::ConfigDB;
+  use esmith::NetworksDB;
+  use Net::IPv4Addr qw(:all);
+  use esmith::util::network qw(:all);
 
-    my $ndb = esmith::NetworksDB->open_ro();
+  my $ndb = esmith::NetworksDB->open_ro();
+  my $accounts = esmith::AccountsDB->open_ro;
 
-    my $localAccess = '';
-    foreach ($ndb->local_access_spec())
+  #start to find the local network range
+  my $localAccess = '';
+  foreach ($ndb->local_access_spec())
     {
-        # If there's a / in the network string
-        # then convert to CIDR notation
-        if (m!/!) 
-            {
+      # If there's a / in the network string
+      # then convert to CIDR notation
+      if (m!/!) 
+          {
             my ($ip,$bits) = Net::IPv4Addr::ipv4_parse($_);
             $localAccess .= "$ip/$bits";
-            }
+          }
     }
 
 
-	my $accounts = esmith::AccountsDB->open_ro;
-	my $config   = esmith::ConfigDB->open_ro;
+  my $config   = esmith::ConfigDB->open_ro;
 
-	my @ibays = $accounts->ibays;
-	foreach my $ibay (@ibays) 
+  my @ibays = $accounts->ibays;
+
+  foreach my $ibay (@ibays) 
         {
                 #first we verify if the NFS is enabled for the ibay
 		my $nfsstatus = $ibay->prop("NfsStatus") || "disabled";
 
                 #then we look about the host(s) allowed
-                my $nfsclient = $ibay->prop("NfsClient") || "none";
-		$nfsclient = $localAccess if (($nfsclient eq 'private') || ($nfsclient eq 'local'));
+                my $nfsclient = $ibay->prop("NfsClient") || "";
+
+		#$nfsclient = $localAccess if (($nfsclient eq 'private') || ($nfsclient eq 'local'));
                 
-
-                #now we look about exports options
-                my $nfsrw           = $ibay->prop("NfsRW")       || 'ro';
-                my $nfssync         = $ibay->prop("NfsSync")     || 'sync';
-                my $wdelay          = $ibay->prop("NfsWdelay")   || 'wdelay'; 
-                my $nfssquash       = $ibay->prop("NfsSquash")   || 'root_squash';
-                my $anonuid         = $ibay->prop("NfsAnonUid")  || '';
-                my $anongid         = $ibay->prop("NfsAnonGid")  || '';
-                my $secure          = $ibay->prop("NfsSecure")   || 'secure';
-                my $hide            = $ibay->prop("NfsHide")     || 'nohide';
-
-                my $nfs_options = $secure . ',' . $hide . ',' . $nfsrw . ',' . $nfssync . ',' . $wdelay . ','
-                                          . $nfssquash;
-
-                $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" if (($anonuid =~ m/(\d+)/) && ($anonuid !~ m/(\D+)/));
-
-                $nfs_options =  $nfs_options . ',' . "anongid=$anongid" if (($anongid =~ m/(\d+)/) && ($anongid !~ m/(\D+)/));
-
-
                 #Then we retrieve the name of the ebay
 		my $key = $ibay->key;
 
-		if (($nfsstatus eq 'enabled') && ($nfsclient ne 'none'))
+                #start to count   
+                my $count = '0';
+
+		if (($nfsstatus eq 'enabled')) 
                 {
 
-			# write the configuration
+                   # write the configuration
+                   {
+                     my @IP = split(",", ($nfsclient || "") );
+                     foreach my $IP (@IP) 
+                       {
+                         #now we look about exports options
+                         my $nfsrw           = $ibay->prop("NfsRW")       || 'ro';
+                         my $nfssync         = $ibay->prop("NfsSync")     || 'sync';
+                         my $wdelay          = $ibay->prop("NfsWdelay")   || 'wdelay';
+                         my $nfssquash       = $ibay->prop("NfsSquash")   || 'root_squash';
+                         my $anonuid         = $ibay->prop("NfsAnonUid")  || '';
+                         my $anongid         = $ibay->prop("NfsAnonGid")  || '';
+                         my $secure          = $ibay->prop("NfsSecure")   || 'secure';
+                         my $hide            = $ibay->prop("NfsHide")     || 'nohide';
 
-                          {
-                             my @IP = split(",", ($nfsclient || "") );
-                             $OUT .=     "\n/home/e-smith/files/ibays/$key/files ";
+                         my $nfs_options = $hide . ',' . $nfssync . ',' . $wdelay;
+                         $nfs_options =  $nfs_options . ',' . "anonuid=$anonuid" 
+                                             if (($anonuid =~ m/(\d+)/) && ($anonuid !~ m/(\D+)/));
+                         $nfs_options =  $nfs_options . ',' . "anongid=$anongid" 
+                                             if (($anongid =~ m/(\d+)/) && ($anongid !~ m/(\D+)/));
+          
+                         if ($IP eq 'local')
+                             {       
+                              $IP          = $localAccess;
+                              $nfsrw       = 'ro';
+                              $nfssquash   = 'root_squash';
+                              $secure      = 'secure';
+                             }
 
-                             foreach my $IP (@IP) 
-                                   {
-                                      $IP = $localAccess if (($IP eq 'private') || ($IP eq 'local'));
-                                      $OUT .=  " $IP($nfs_options)";
-                                   }
-                          }
+                         $nfs_options = $nfs_options . ',' . $nfsrw;
+                         $nfs_options = $nfs_options . ',' . $nfssquash;
+                         $nfs_options = $nfs_options . ',' . $secure;
 
-                }
+                         if ( (isValidIP($IP) && ipv4_in_network ("$localAccess",$IP) ) || ($IP eq $localAccess) )    
+                            {
+                             $OUT .=     "\n/home/e-smith/files/ibays/$key/files " if ($count == '0');
+                             $OUT .=  " $IP($nfs_options)" ;#if isValidIP($IP) && ipv4_in_network ("$localAccess",$IP);
+                             $count++
+                            }
 
-	}
+                       }
+
+                   }
+
+              }
+
+        }
 
 }
