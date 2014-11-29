@@ -36,8 +36,6 @@
                 #then we look about the host(s) allowed
                 my $nfsclient = $ibay->prop("NfsClient") || "";
 
-		#$nfsclient = $localAccess if (($nfsclient eq 'private') || ($nfsclient eq 'local'));
-                
                 #Then we retrieve the name of the ebay
 		my $key = $ibay->key;
 
@@ -82,8 +80,8 @@
 
                          if ( (isValidIP($IP) && ipv4_in_network ("$localAccess",$IP) ) || ($IP eq $localAccess) )    
                             {
-                             $OUT .=     "\n/home/e-smith/files/ibays/$key/files " if ($count == '0');
-                             $OUT .=  " $IP($nfs_options)" ;#if isValidIP($IP) && ipv4_in_network ("$localAccess",$IP);
+                             $OUT .=  "\n/home/e-smith/files/ibays/$key/files " if ($count == '0');
+                             $OUT .=  " $IP($nfs_options)";
                              $count++
                             }
 
@@ -96,3 +94,4 @@
         }
 
 }
+
