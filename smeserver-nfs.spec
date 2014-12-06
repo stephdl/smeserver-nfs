@@ -6,7 +6,7 @@ Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
 %define version 1.2.0
-%define release 4
+%define release 5
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -26,7 +26,14 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
-* Tue Dec 6 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-4.sme
+* Sun Dec 7 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-5.sme
+- added a template of hosts.allow
+- added restart nfslock/rpcbind to remoteaccess-update & nfs-update
+- display Group description and permissions from ibay account in nfs panel
+- added a textarea box for ip of nfsclient
+- display status of nfs share in the main panel
+
+* Sat Dec 6 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-4.sme
 - Added a panel with en-us locale and validator
 
 * Tue Nov 25 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-3.sme

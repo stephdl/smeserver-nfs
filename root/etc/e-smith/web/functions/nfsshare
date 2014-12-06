@@ -117,7 +117,7 @@ __DATA__
             value="">
             <description>DESC_NFSCLIENT</description>
        </field>
-        <field type="text" id="nfsclient" validation="IPinLocalNetwork" size="80" >
+        <field type="textarea" id="nfsclient" validation="IPinLocalNetwork" >
             <label>NFSCLIENT</label>
         </field>
         <field type="select" id="nfsrw" value="ro" options="'ro' => 'RO', 'rw' => 'RW'">
