@@ -21,6 +21,8 @@ foreach (qw(sysconfig/nfs exports))
 
 foreach $event (qw(remoteaccess-update nfs-update))
 {
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/rpcbind");
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfslock");
     safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfs");
 }
 
