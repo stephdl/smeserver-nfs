@@ -9,7 +9,7 @@ panel_link("nfsshare", "manager");
 
 
 
-foreach (qw(sysconfig/nfs exports))
+foreach (qw(sysconfig/nfs exports hosts.allow))
 {
     templates2events("/etc/$_", qw(
 	console-save
