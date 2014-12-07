@@ -30,6 +30,8 @@ e-smith server and gateway - configure nfs server
 - added a template of hosts.allow
 - added restart nfslock/rpcbind to remoteaccess-update & nfs-update
 - display Group description and permissions from ibay account in nfs panel
+- added a textarea box for ip of nfsclient
+- display status of nfs share in the main panel
 
 * Sat Dec 6 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-4.sme
 - Added a panel with en-us locale and validator

@@ -118,6 +118,7 @@ sub print_ibay_table {
     my $q = $self->{cgi};
     my $name        = $self->localise('NAME');
     my $description = $self->localise('DESCRIPTION');
+    my $nfsstatus   = $self->localise('NFS_IS_ENABLED');
     my $modify      = $self->localise('MODIFY');
     my $action_h    = $self->localise('ACTION');
     
@@ -133,6 +134,7 @@ sub print_ibay_table {
     print $q->Tr (
                   esmith::cgi::genSmallCell($q, $name,"header"),
                   esmith::cgi::genSmallCell($q, $description,"header"),
+                  esmith::cgi::genSmallCell($q, $nfsstatus,"header"),
                   esmith::cgi::genSmallCell($q, $action_h,"header", 3)),"\n";
     my $scriptname = basename($0);
 
@@ -140,8 +142,11 @@ sub print_ibay_table {
     {
         my $ibayname = $i->key();
         my $ibaydesc = $i->prop('Name');
-
+        my $ibaynfs  = $i->prop('NfsStatus')||'disabled';
         my $modifiable = $i->prop('Modifiable') || 'yes';
+
+        $ibaynfs = $self->localise('ENABLED') if ($ibaynfs eq 'enabled');
+        $ibaynfs = $self->localise('DISABLED') if ($ibaynfs eq 'disabled');
 
 
         my $params = $self->build_ibay_cgi_params($ibayname, $i->props());
@@ -160,6 +165,7 @@ sub print_ibay_table {
         print $q->Tr (
             esmith::cgi::genSmallCell($q, $ibayname,"normal"),
             esmith::cgi::genSmallCell($q, $ibaydesc,"normal"),
+            esmith::cgi::genSmallCell($q, $ibaynfs,"normal"),
             esmith::cgi::genSmallCell($q, $actionModify,"normal"));
     }
 
@@ -245,8 +251,12 @@ sub print_ibay_name_field {
                 ($rec->prop('NfsStatus')));
             $q->param(-name=>'nfslocalnetwork',-value=>
                 ($rec->prop('NfsLocalNetwork')));
-            $q->param(-name=>'nfsclient',-value=>
-                ($rec->prop('NfsClient'))); 
+      #we need to replace the : delimeter of the db  per a \n
+      #with that we can have one ip per line in the textarea box of the panel
+            my $nfsclientform = $rec->prop('NfsClient') || '';
+            $nfsclientform =~ s/:/\n/g;
+
+            $q->param(-name=>'nfsclient',-value=> $nfsclientform);
             $q->param(-name=>'nfsrw',-value=>
                 ($rec->prop('NfsRW')));  
             $q->param(-name=>'nfssync',-value=>
@@ -361,12 +371,22 @@ sub print_save_or_add_button {
 sub modify_ibay {
     my ($self) = @_;
     my $name = $self->cgi->param('name');
+    #we  take the content of textarea nfsclient (one ip per line)
+    #and we split it and add a separator ':'  to record that in a db
+    my $nfsclientCGI = $self->cgi->param('nfsclient');
+    my @nfsclientCGI = split /\s+/, $nfsclientCGI;
+    my $nfsclientdb = '';
+    foreach (@nfsclientCGI)
+    {
+        $nfsclientdb = $nfsclientdb . ':' . $_;
+    }
+
     if (my $acct = $accountdb->get($name)) {
         if ($acct->prop('type') eq 'ibay') {
             $acct->merge_props(
                 NfsStatus       => $self->cgi->param('nfsstatus'),
                 NfsLocalNetwork => $self->cgi->param('nfslocalnetwork'),
-                NfsClient       => $self->cgi->param('nfsclient'),
+                NfsClient       => $nfsclientdb,
                 NfsRW           => $self->cgi->param('nfsrw'),
                 NfsSync         => $self->cgi->param('nfssync'),
                 NfsWdelay       => $self->cgi->param('nfswdelay'),
@@ -402,7 +422,7 @@ verify that the IP list contains good IP and also in the range of all Local Netw
 sub IPinLocalNetwork {
    my $self = shift;
    my $nfsclientfield = $self->cgi->param('nfsclient');
-   my @nfsclient = split /[:]/, $nfsclientfield; 
+   my @nfsclient = split /\s+/, $nfsclientfield;
 
    sub convert_to_cidr
    {
@@ -438,8 +458,8 @@ verify that the gid is a positive integer inferior at 4294967295
 sub ValidUid {
    my $self = shift;
    my $nfsanonuid = $self->cgi->param('nfsanonuid');
-
-   if ((($nfsanonuid eq int($nfsanonuid)) && ($nfsanonuid > 0) && ($nfsanonuid < 4294967295))|| ($nfsanonuid eq ''))
+   $nfsanonuid = '1' if $nfsanonuid eq '';
+   if (($nfsanonuid eq int($nfsanonuid)) && ($nfsanonuid > 0) && ($nfsanonuid < 4294967295))
    {
       return "OK";
    }
@@ -457,8 +477,8 @@ verify that the gid is a positive integer inferior at 4294967295
 sub ValidGid {
    my $self = shift;
    my $nfsanongid = $self->cgi->param('nfsanongid');
-  
-   if ((($nfsanongid eq int($nfsanongid)) && ($nfsanongid > 0) && ($nfsanongid < 4294967295))|| ($nfsanongid eq ''))
+   $nfsanongid = '1' if $nfsanongid eq '';
+   if (($nfsanongid eq int($nfsanongid)) && ($nfsanongid > 0) && ($nfsanongid < 4294967295))
    {
       return "OK";
    }

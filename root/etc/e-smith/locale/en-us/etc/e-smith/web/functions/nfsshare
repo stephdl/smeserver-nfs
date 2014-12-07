@@ -78,25 +78,19 @@
          <entry>
         <base>DESC_NFSCLIENT</base>
         <trans>
-        For writing permissions and allowing the root user, you must configure a list of IP being part of the local network and separated by a ':'.
+        For writing permissions,allowing the root user and using insecure ports, you must configure a list of one IP per line, being part of the local network(s).
         </trans>
     </entry>
    <entry>
-    <base>NFSCLIENT_NEED_A_:_AS_SEPARATOR</base>
-    <trans>
-       You must use a ':' as IP separator.
-    </trans>
-  </entry>
-   <entry>
    <base>NFSCLIENT_FIELD_IS_NOT_IN_ANY_LOCALNETWORK</base>
     <trans>
-     You must set IP being part of your local network with the separator ':'.
+     You must set IP(s) being part of your local network.
    </trans>
   </entry>
    <entry>
    <base>NFSCLIENT_FIELD_IS_NOT_AN_IP</base>
    <trans>
-   You must set real IP with the separator ':'.
+   You must set real IP(s) being part of your local network.
    </trans>
  </entry>
    <entry>
@@ -274,6 +268,9 @@
         <base>EVERYONE</base>
         <trans>Everyone</trans>
     </entry>
-
+       <entry>
+        <base>NFS_IS_ENABLED</base>
+        <trans>Nfs status</trans>
+    </entry>
 </lexicon>
 
