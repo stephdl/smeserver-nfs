@@ -32,7 +32,7 @@
     <entry>
         <base>NAME_LABEL</base>
         <trans>
-            Information bay name
+            Information bay name.
         </trans>
     </entry>
     <entry>
@@ -66,7 +66,7 @@
      <entry>
         <base>DESC_ANONUIDGID</base>
         <trans>
-            These options explicitly set the uid and gid of the share account, where you might want all requests appear to be from one user or one group.
+            Set the uid and gid if you want all requests appear to be from one user or one group, otherwise leave blank.
         </trans>
     </entry>
      <entry>
@@ -96,7 +96,7 @@
    <entry>
    <base>ENABLE_LOCALNETWORK</base>
    <trans>
-   Share on local network with secure permissions.
+   Share on local network.
    </trans>
   </entry>
     <entry>
@@ -108,128 +108,128 @@
         <entry>
         <base>NFSRW</base>
         <trans>
-     The exported file system permissions.
+     File system permissions.
         </trans>
     </entry>
          <entry>
         <base>RO</base>
         <trans>
-         Read Only on the exported file
+         Read Only
         </trans>
     </entry>
          <entry>
         <base>RW</base>
         <trans>
-        Read and Write on the exported file
+        Read and Write
         </trans>
     </entry>   
     <entry>
         <base>NFSSYNC</base>
         <trans>
-      Changes can be written (a)synchronously.
+      Write (a)synchronously.
         </trans>
    </entry>
        <entry>
         <base>SYNC</base>
         <trans>
-         synchronous writes
+         synchronous
         </trans>
     </entry>
        <entry>
         <base>ASYNC</base>
         <trans>
-         asynchronous writes
+         asynchronous
         </trans>
     </entry>
     <entry>
         <base>NFSDELAY</base>
         <trans>
-        delays disk writes if requests are small.
+        Delays the disk writings.
         </trans>
    </entry>
        <entry>
         <base>WDELAY</base>
         <trans>
-         wdelay, delays disk writes
+         write delay
         </trans>
     </entry>
    
      <entry>
         <base>NO_WDELAY</base>
         <trans>
-         no_wdelay, Write as soon as possible
+         no write delay
         </trans>
     </entry>
     <entry>
         <base>NFSSQUASH</base>
         <trans>
-        Squashe the power of the remote users.
+        Squash the power of users.
         </trans>
     </entry>
        <entry>
         <base>ROOT_SQUASH</base>
         <trans>
-         root_squash, Convert root to the anonymous.
+         root squash
         </trans>
     </entry>
        <entry>
         <base>NO_ROOT_SQUASH</base>
         <trans>
-         no_root_squash, let root be root
+         no root squash
         </trans>
     </entry>
        <entry>
         <base>ALL_SQUASH</base>
         <trans>
-         all_squash, convert all users to anonymous
+         all users squash
         </trans>
     </entry>
        <entry>
         <base>NFSANONUID</base>
         <trans>
-         anonuid : Set the UID (leave blank if not used)
+         Set the UID.
         </trans>
     </entry>
      <entry>
         <base>NFSANONGID</base>
         <trans>
-         anongid : Set the GID (leave blank if not used)
+         Set the GID.
         </trans>
     </entry>
    <entry>
        <base>NFSHIDE</base>
        <trans>
-        Browse parent and child folders
+        Browse the parent folders.
         </trans>
    </entry>
    <entry>
      <base>HIDE</base>
      <trans>
-        hide the parent folder
+        hide folder
      </trans>
    </entry>
    <entry>
    <base>NOHIDE</base>
        <trans>
-        nohide the parent folder
+        nohide folder
        </trans>
    </entry>
     <entry>
        <base>NFSSECURE</base>
        <trans>
-       Require requests on port less than 1024
+       Requests on secure ports.
        </trans>
    </entry>
    <entry>
    <base>SECURE</base>
       <trans>
-      secure  : port less than 1024
+      secure
       </trans>
    </entry>
    <entry>
    <base>INSECURE</base>
        <trans>
-            insecure  : port above than 1024
+            insecure
       </trans>
    </entry>
    <entry>
@@ -258,11 +258,11 @@
     </entry>
     <entry>
         <base>GROUP_LABEL</base>
-        <trans>Group</trans>
+        <trans>Ownership Group.</trans>
     </entry>
     <entry>
         <base>USERACCESS_LABEL</base>
-        <trans>User access</trans>
+        <trans>I-bay Permissions.</trans>
     </entry>
     <entry>
         <base>EVERYONE</base>
