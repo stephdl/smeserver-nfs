@@ -190,8 +190,20 @@ sub build_ibay_cgi_params {
 sub print_ibay_name_field {
     my $self = shift;
     my $in = $self->{cgi}->param('name') || '';
+    my $group = $accountdb->get_prop("$in",'Group')||'';
+    my $groupdesc =  $accountdb->get_prop("$group",'Description')||'';
+    my $useraccess = $accountdb->get_prop("$in",'UserAccess')||'';
     my $action = $self->{cgi}->param('action') || '';
     my $maxLength = $configdb->get('maxIbayNameLength')->value;
+
+    #retieve the translation for useraccess
+    $useraccess = $self->localise('WGRG') if ($useraccess eq 'wr-group-rd-group');
+    $useraccess = $self->localise('WGRE') if ($useraccess eq 'wr-group-rd-everyone');
+    $useraccess = $self->localise('WARG') if ($useraccess eq 'wr-admin-rd-group');
+    #retrieve correct name/description
+    $group      = $self->localise('EVERYONE') if ($group eq 'shared');
+    $group      = "$groupdesc " . "($group)"  if ($groupdesc ne '');
+
     print qq(<tr><td colspan="2">) . $self->localise('NAME_FIELD_DESC',
         {maxLength => $maxLength}) . qq(</td></tr>);
     print qq(<tr><td class="sme-noborders-label">) . 
@@ -200,6 +212,22 @@ sub print_ibay_name_field {
         print qq(
             <td class="sme-noborders-content">$in 
             <input type="hidden" name="name" value="$in">
+            <input type="hidden" name="action" value="modify">
+            </td>
+        );
+    print qq(<tr><td class="sme-noborders-label">) .
+        $self->localise('GROUP_LABEL') . qq(</td>\n);
+        print qq(
+            <td class="sme-noborders-content">$group 
+            <input type="hidden" name="group" value="$group">
+            <input type="hidden" name="action" value="modify">
+            </td>
+        );
+    print qq(<tr><td class="sme-noborders-label">) .
+        $self->localise('USERACCESS_LABEL') . qq(</td>\n);
+        print qq(
+            <td class="sme-noborders-content">$useraccess 
+            <input type="hidden" name="useraccess" value="$useraccess">
             <input type="hidden" name="action" value="modify">
             </td>
         );

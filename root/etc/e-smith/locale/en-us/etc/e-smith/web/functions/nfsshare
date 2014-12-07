@@ -250,5 +250,30 @@
    The UID has to be a positive integer inferior at 4,294,967,295
    </trans>
  </entry>
+    <entry>
+        <base>WGRG</base>
+        <trans>Write = group, Read = group</trans>
+    </entry>
+    <entry>
+        <base>WGRE</base>
+        <trans>Write = group, Read = everyone</trans>
+    </entry>
+    <entry>
+        <base>WARG</base>
+        <trans>Write = admin, Read = group</trans>
+    </entry>
+    <entry>
+        <base>GROUP_LABEL</base>
+        <trans>Group</trans>
+    </entry>
+    <entry>
+        <base>USERACCESS_LABEL</base>
+        <trans>User access</trans>
+    </entry>
+    <entry>
+        <base>EVERYONE</base>
+        <trans>Everyone</trans>
+    </entry>
+
 </lexicon>
 
