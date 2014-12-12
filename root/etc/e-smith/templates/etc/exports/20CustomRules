@@ -1,0 +1,53 @@
+{
+use strict;
+use warnings;
+use esmith::NetworksDB;
+use esmith::ConfigDB;
+use Net::IPv4Addr qw(ipv4_in_network ipv4_parse);
+use esmith::util::network qw(isValidIP);
+
+my $DB = esmith::ConfigDB->open_ro or die "can't open Config DB";
+my $ndb = esmith::NetworksDB->open_ro or die "can't open Network DB";
+
+sub convert_to_cidr2
+   {
+     $_ = shift;
+     return "$_/32" unless (m!/!);
+     my ($ip,$bits) = ipv4_parse($_);
+     return "$ip/$bits";
+   }
+
+   my @localAccess = map {
+   convert_to_cidr2($_)
+   } $ndb->local_access_spec();
+
+
+my $rules = $DB->get('nfs-rules') || '';
+my %properties = $rules->props;
+
+return "\# no custom rules, you are an Angel\n" unless ($rules ne '');
+
+$OUT .= "#Here Your custom rules, we hope that you know what you are doing\n";
+   foreach my $properties ( sort keys %properties)
+   {
+     my $values = $DB->get_prop("nfs-rules","$properties");
+     my $IP =  $1 if $values =~/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/;
+
+     if ($values =~/(\/+\w+)\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/)
+     {
+       $OUT .= "$values\n" if (isValidIP($IP) && (grep { ipv4_in_network($_, $IP) } @localAccess) );
+       $OUT .= "##This is not an IP : $values\n" if (!isValidIP($IP));
+       $OUT .= "##Your IP is not in your Local Networks : $values\n" if (!grep { ipv4_in_network($_, $IP) } @localAccess);
+     }
+     elsif ($values =~/(\/+)\s+(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/)
+     {
+       $OUT .= "##Give a full path, '/' is non accepted : $values\n";
+     }
+     elsif ($values =~/(\/+\w+)\s+\*/)
+     {
+       $OUT .= "##Wild Card * not accepted: $values\n";
+     }
+
+   }
+}
+
