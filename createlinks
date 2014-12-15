@@ -31,6 +31,7 @@ foreach $event (qw(remoteaccess-update nfs-update network-create))
     safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfslock");
     safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfs");
 }
+
 #The service rpcbind needs to be restarted before nfs service, 
 #but sometime it start before so I had to do a specific action
 for my $event (qw(remoteaccess-update nfs-update network-create))
@@ -38,6 +39,12 @@ for my $event (qw(remoteaccess-update nfs-update network-create))
     event_link("smeserver-nfs-restart-rpcbind", $event, "05");
 }
 
+#here a specific event only for the server-manager, nfs-update is an event a bit long
+foreach $event (qw(nfs-conf))
+{
+    safe_symlink("restart", "root/etc/e-smith/events/$event/services2adjust/nfs");
+    templates2events("/etc/exports", $event);
+}
 
 service_link_enhanced("rpcbind", "S13", "7");
 service_link_enhanced("nfslock", "S59", "7");

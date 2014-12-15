@@ -399,7 +399,7 @@ sub modify_ibay {
 
             # Untaint $name before use in system()
             $name =~ /(.+)/; $name = $1;
-            if (system ("/sbin/e-smith/signal-event", "nfs-update", 
+            if (system ("/sbin/e-smith/signal-event", "nfs-conf", 
                 $name) == 0) 
             {
                 $self->success("SUCCESSFULLY_MODIFIED_IBAY");
