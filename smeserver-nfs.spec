@@ -6,7 +6,7 @@ Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
 %define version 1.2.0
-%define release 5
+%define release 6 
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -26,6 +26,10 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
+* Mon Dec 15 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-6.sme
+- Added an event nfs-conf shorter for the server-manager
+- Added a template /etc/exports/20CustomRules for manual settings
+
 * Sun Dec 7 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-5.sme
 - added a template of hosts.allow
 - added restart nfslock/rpcbind to remoteaccess-update & nfs-update
