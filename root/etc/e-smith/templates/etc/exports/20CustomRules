@@ -23,20 +23,19 @@
 
 
     my $rules = $DB->get('nfs-rules') || '';
-    my %properties = $rules->props;
-
     return "\# no custom rules, you are an Angel\n" unless ($rules ne '');
 
-    $OUT .= "##################################################################\n";
-    $OUT .= "#Here Your custom rules, we hope that you know what you are doing#\n";
-    $OUT .= "##################################################################\n";
+    my %properties = $rules->props;
+
+    $OUT .= "\n";
+    $OUT .= "# Here Your custom rules, we hope that you know what you are doing\n";
 
     foreach my $properties ( sort keys %properties)
     {
         my $values = $DB->get_prop("nfs-rules","$properties");
         my $IP =  $1 if $values =~/(\d{1,5}\.\d{1,5}\.\d{1,5}\.\d{1,5})/;
 
-        if ($values =~/[\/a-zA-Z0-9_\-]\s+(\d{1,5}\.\d{1,5}\.\d{1,5}\.\d{1,5}(\(|\/\d{2,2}\())/)
+        if ($values =~/[\/a-zA-Z0-9_\-]+\s+(\d{1,5}\.\d{1,5}\.\d{1,5}\.\d{1,5}(\(|\/\d{2,2}\())/)
         {
             $OUT .= "$values\n" if (isValidIP($IP) && (grep { ipv4_in_network($_, $IP) } @localAccess) );
             $OUT .= "##This is not an IP : $values\n" if (!isValidIP($IP));
@@ -47,14 +46,13 @@
         {
             $OUT .= "##Give a full path, '/' is not accepted : $values\n";
         }
-        elsif ($values =~/[\/a-zA-Z0-9_\-]\s+\*/)
+        elsif ($values =~/[\/a-zA-Z0-9_\-]+\s+\*/)
         {
             $OUT .= "##Wild Card * not accepted: $values\n";
         }
-        elsif ($values =~/[\/a-zA-Z0-9_\-]\s+(\d{1,5}\.\d{1,5}\.\d{1,5}\.\d{1,5})(\s+|\/\d{2,2}\s+)/)
+        elsif ($values =~/[\/a-zA-Z0-9_\-]+\s+(\d{1,5}\.\d{1,5}\.\d{1,5}\.\d{1,5})(\s+|\/\d{2,2}\s+)/)
         {
             $OUT .="##No spaces between IP and nfs rules : $values\n";
         }
     }
 }
-
