@@ -27,6 +27,8 @@ our @EXPORT = qw(
     print_ibay_table
     print_ibay_name_field
     print_vhost_message
+    group_list
+    userAccess_list
     max_ibay_name_length
     handle_ibays
     print_save_or_add_button
@@ -196,19 +198,19 @@ sub build_ibay_cgi_params {
 sub print_ibay_name_field {
     my $self = shift;
     my $in = $self->{cgi}->param('name') || '';
-    my $group = $accountdb->get_prop("$in",'Group')||'';
-    my $groupdesc =  $accountdb->get_prop("$group",'Description')||'';
-    my $useraccess = $accountdb->get_prop("$in",'UserAccess')||'';
+   # my $group = $accountdb->get_prop("$in",'Group')||'';
+   # my $groupdesc =  $accountdb->get_prop("$group",'Description')||'';
+   # my $useraccess = $accountdb->get_prop("$in",'UserAccess')||'';
     my $action = $self->{cgi}->param('action') || '';
     my $maxLength = $configdb->get('maxIbayNameLength')->value;
 
     #retieve the translation for useraccess
-    $useraccess = $self->localise('WGRG') if ($useraccess eq 'wr-group-rd-group');
-    $useraccess = $self->localise('WGRE') if ($useraccess eq 'wr-group-rd-everyone');
-    $useraccess = $self->localise('WARG') if ($useraccess eq 'wr-admin-rd-group');
+   # $useraccess = $self->localise('WGRG') if ($useraccess eq 'wr-group-rd-group');
+   # $useraccess = $self->localise('WGRE') if ($useraccess eq 'wr-group-rd-everyone');
+   # $useraccess = $self->localise('WARG') if ($useraccess eq 'wr-admin-rd-group');
     #retrieve correct name/description
-    $group      = $self->localise('EVERYONE') if ($group eq 'shared');
-    $group      = "$groupdesc " . "($group)"  if ($groupdesc ne '');
+    #$group      = $self->localise('EVERYONE') if ($group eq 'shared');
+    #$group      = "$groupdesc " . "($group)"  if ($groupdesc ne '');
 
     print qq(<tr><td colspan="2">) . $self->localise('NAME_FIELD_DESC',
         {maxLength => $maxLength}) . qq(</td></tr>);
@@ -221,22 +223,22 @@ sub print_ibay_name_field {
             <input type="hidden" name="action" value="modify">
             </td>
         );
-    print qq(<tr><td class="sme-noborders-label">) .
-        $self->localise('GROUP_LABEL') . qq(</td>\n);
-        print qq(
-            <td class="sme-noborders-content">$group 
-            <input type="hidden" name="group" value="$group">
-            <input type="hidden" name="action" value="modify">
-            </td>
-        );
-    print qq(<tr><td class="sme-noborders-label">) .
-        $self->localise('USERACCESS_LABEL') . qq(</td>\n);
-        print qq(
-            <td class="sme-noborders-content">$useraccess 
-            <input type="hidden" name="useraccess" value="$useraccess">
-            <input type="hidden" name="action" value="modify">
-            </td>
-        );
+#    print qq(<tr><td class="sme-noborders-label">) .
+#        $self->localise('GROUP_LABEL') . qq(</td>\n);
+#        print qq(
+#            <td class="sme-noborders-content">$group 
+#            <input type="hidden" name="group" value="$group">
+#            <input type="hidden" name="action" value="modify">
+#            </td>
+#        );
+#    print qq(<tr><td class="sme-noborders-label">) .
+#        $self->localise('USERACCESS_LABEL') . qq(</td>\n);
+#        print qq(
+#            <td class="sme-noborders-content">$useraccess 
+#            <input type="hidden" name="useraccess" value="$useraccess">
+#            <input type="hidden" name="action" value="modify">
+#            </td>
+#        );
 
         # Read the values for each field from the accounts db and store
         # them in the cgi object so our form will have the correct 
@@ -247,6 +249,10 @@ sub print_ibay_name_field {
         {
             $q->param(-name=>'description',-value=>
                 $rec->prop('Name'));
+            $q->param(-name=>'group',-value=>
+                $rec->prop('Group'));
+            $q->param(-name=>'userAccess',-value=>
+                $rec->prop('UserAccess'));
             $q->param(-name=>'nfsstatus',-value=>
                 ($rec->prop('NfsStatus')));
             $q->param(-name=>'nfslocalnetwork',-value=>
@@ -386,6 +392,8 @@ sub modify_ibay {
             $acct->merge_props(
                 NfsStatus       => $self->cgi->param('nfsstatus'),
                 NfsLocalNetwork => $self->cgi->param('nfslocalnetwork'),
+                UserAccess      => $self->cgi->param('userAccess'),
+                Group           => $self->cgi->param('group'),
                 NfsClient       => $nfsclientdb,
                 NfsRW           => $self->cgi->param('nfsrw'),
                 NfsSync         => $self->cgi->param('nfssync'),
@@ -399,7 +407,8 @@ sub modify_ibay {
 
             # Untaint $name before use in system()
             $name =~ /(.+)/; $name = $1;
-            if (system ("/sbin/e-smith/signal-event", "nfs-conf", 
+            if (system ("/sbin/e-smith/signal-event", "ibay-modify",
+                $name) == 0 && system ("/sbin/e-smith/signal-event", "nfs-conf", 
                 $name) == 0) 
             {
                 $self->success("SUCCESSFULLY_MODIFIED_IBAY");
@@ -519,4 +528,54 @@ sub getExtraParams
     }
     return (name => $name, description => $desc);
 }
+
+
+=head2 group_list()
+
+Returns a hash of groups for the Create/Modify screen's group field's
+drop down list.
+
+=for testing
+can_ok('main', 'group_list');
+my $g = group_list();
+is(ref($g), 'HASH', "group_list returns a hashref");
+is($g->{simpsons}, "Simpsons Family (simpsons)",
+    "Found names and descriptions");
+
+=cut
+
+sub group_list 
+{
+    my @groups = $accountdb->groups();
+    my %groups = ( admin => 'Admin', shared => 'Everyone' );
+    foreach my $g (@groups) {
+        $groups{$g->key()} = $g->prop('Description')." (".
+            $g->key.")";
+    }
+    return \%groups;
+}
+
+
+=head2 userAccess_list
+
+Returns the hash of user access settings for showing in the user access
+drop down list.
+
+=for testing
+can_ok('main', 'userAccess_list');
+my $u = userAccess_list();
+is(ref($u), 'HASH', "userAccess_list returns a hashref");
+like($u->{'wr-group-rd-group'}, qr/WGRG/, "hashref contains the right stuff");
+
+=cut
+
+sub userAccess_list 
+{
+    return {
+        'wr-group-rd-group'    => 'WGRG',
+        'wr-group-rd-everyone' => 'WGRE',
+        'wr-admin-rd-group'    => 'WARG'
+    };
+}
+
 1;

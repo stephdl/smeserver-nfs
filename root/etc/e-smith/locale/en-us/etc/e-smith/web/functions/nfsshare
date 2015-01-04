@@ -14,13 +14,13 @@
     <entry>
         <base>FIRSTPAGE_DESC</base>
         <trans>
-         Manage NFS Share settings.
+         Manage NFS Ibay settings.
         </trans>
     </entry>
     <entry>
         <base>ADD_TITLE</base>
         <trans>
-            Manage NFS Share settings.
+            Manage NFS Ibay settings.
         </trans>
     </entry>
     <entry>
@@ -258,7 +258,7 @@
     </entry>
     <entry>
         <base>GROUP_LABEL</base>
-        <trans>Ownership Group.</trans>
+        <trans>Share Owner Group.</trans>
     </entry>
     <entry>
         <base>USERACCESS_LABEL</base>
@@ -272,5 +272,12 @@
         <base>NFS_IS_ENABLED</base>
         <trans>Nfs status</trans>
     </entry>
+    <entry>
+        <base>USER_ACCESS</base>
+        <trans>
+            Access via file sharing.
+        </trans>
+    </entry>
+
 </lexicon>
 

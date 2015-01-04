@@ -6,7 +6,7 @@ Summary: smeserver - configure nfs server
 %define name smeserver-nfs
 Name: %{name}
 %define version 1.2.0
-%define release 7
+%define release 8 
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -26,6 +26,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure nfs server
 
 %changelog
+* Sun Jan 4 2015 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-8.sme
+- The ownership and the user access of the Ibay are modifiable by the contrib
+ 
 * Mon Dec 15 2014 stephane de Labrusse <stephdl@de-labrusse.fr> 1.2.0-7.sme
 - added a default db nfs-rules
 - added an exception if nfs-rules is removed by the admin

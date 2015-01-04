@@ -105,6 +105,13 @@ __DATA__
         <title>ADD_TITLE</title>
         <subroutine src="print_ibay_name_field()" />
  
+        <field type="select" id="group" options="group_list()">
+            <label>GROUP_LABEL</label>
+        </field>
+        <field type="select" id="userAccess" options="userAccess_list()">
+            <label>USER_ACCESS</label>
+        </field>
+
         <field type="select" id="nfsstatus" value="disabled" options="'disabled' => 'DISABLED', 'enabled' => 'ENABLED'">
             <label>NFSSTATUS</label>
         </field>
